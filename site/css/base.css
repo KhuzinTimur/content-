@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Шрифты проекта
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Days';
+  src: url('../fonts/Days.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Albra';
+  src: url('../fonts/AlbraBookTRIAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Reset и базовые стили
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip; /* гасим горизонтальный вылет, не ломая sticky */
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--text-primary);
+  background-color: var(--bg);
+  transition: background-color var(--transition-base), color var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+body > .container {
+  position: relative;
+  z-index: 1;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+/* ---- Утилиты ---- */
+
+/* .container — широкая рабочая зона (хедер, сетки карточек, широкие изображения).
+   На очень широких мониторах (>1600px) не растягивается бесконечно —
+   ограничена --container-max, зато отступы по краям остаются пропорциональными. */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* .prose — узкая колонка для длинных связных текстов (абзацы кейсов, about).
+   Использовать ВНУТРИ .container, не вместо него. */
+.prose {
+  max-width: var(--measure-text);
+}
+.prose-wide {
+  max-width: var(--measure-wide);
+}
+
+/* .section — вертикальный ритм между крупными блоками страницы */
+.section {
+  padding-block: var(--space-16);
+}
+.section-lg {
+  padding-block: var(--space-24);
+}
+
+/* Тонкий однопиксельный разделитель, как в референсах */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Скрывает элемент, пока JS не подставит перевод — избегаем "мигания" текста */
+[data-i18n]:empty {
+  min-height: 1em;
+}
+
+/* ---- Типографика ----
+   Правило: чем крупнее размер шрифта, тем плотнее line-height и тем более
+   отрицательный (сжатый) letter-spacing — так крупные заголовки не "рассыпаются".
+   Мелкий текст в капсе (eyebrow), наоборот, разрежен для читаемости. */
+
+.hero-title,
+h1.hero { font-size: var(--fs-hero); line-height: var(--lh-hero); letter-spacing: var(--ls-hero); font-weight: 700; }
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); font-weight: 700; }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); letter-spacing: var(--ls-h3); font-weight: 600; }
+
+p, .text-body { font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: var(--ls-body); }
+.text-body-lg { font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); letter-spacing: var(--ls-body); }
+.text-small { font-size: var(--fs-small); line-height: var(--lh-small); letter-spacing: var(--ls-body); }
+
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-micro);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   Градиентные заголовки H1 и H2
+   ========================================================================== */
+
+h1, h2 {
+  background-image: var(--title-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* Исключение: заголовки проектных сцен используют цвет проекта,
+   а не общий градиент (см. project-scroll.css) */
+.project-scene-content h2 {
+  background-image: none;
+  -webkit-text-fill-color: var(--scene-accent, #fff);
+          color: var(--scene-accent, #fff);
+}
+
+/* ==========================================================================
+   Кнопка "наверх" — плавающая, справа снизу
+   ========================================================================== */
+
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+          backdrop-filter: blur(14px) saturate(140%);
+  color: var(--text-secondary);
+  cursor: pointer;
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 320ms ease,
+    visibility 320ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 320ms ease;
+  pointer-events: none;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.back-to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--accent) 25%, transparent),
+    0 2px 8px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.back-to-top:active {
+  transform: translateY(-1px) scale(0.96);
+}
+
+@media (max-width: 720px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+  .back-to-top svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: opacity 220ms ease, visibility 220ms ease;
+    transform: none;
+  }
+  .back-to-top:hover {
+    transform: none;
+  }
+}

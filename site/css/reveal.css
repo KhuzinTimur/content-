@@ -1,0 +1,67 @@
+/* ==========================================================================
+   reveal.css — универсальные анимации (fade-in, выезд, параллакс)
+   Работает в паре с js/reveal.js
+   ========================================================================== */
+
+/* ---- Базовое появление: снизу-вверх + fade-in (мягко, медленно) ---- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1400ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Модификаторы направления ---- */
+
+.reveal.reveal-left {
+  transform: translateX(-32px);
+}
+.reveal.reveal-left.is-visible {
+  transform: translateX(0);
+}
+
+.reveal.reveal-right {
+  transform: translateX(32px);
+}
+.reveal.reveal-right.is-visible {
+  transform: translateX(0);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.96);
+}
+.reveal.reveal-scale.is-visible {
+  transform: scale(1);
+}
+
+/* ---- Параллакс ---- */
+
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0), 0);
+  will-change: transform;
+}
+
+/* ---- Если пользователь отключил анимации — показываем всё сразу ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.reveal-left,
+  .reveal.reveal-right,
+  .reveal.reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+}

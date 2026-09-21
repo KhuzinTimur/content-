@@ -1,0 +1,834 @@
+/* ==========================================================================
+   project-page.css — общие стили для страниц кейсов (projects/*.html)
+   ========================================================================== */
+
+/* ---- Hero проекта ---- */
+
+.project-page-hero {
+  padding-block: var(--space-16) var(--space-12);
+}
+
+.project-page-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--scene-accent, var(--accent)) 35%, transparent);
+  background: color-mix(in srgb, var(--scene-accent, var(--accent)) 10%, transparent);
+  color: var(--scene-accent, var(--accent));
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+
+.project-page-hero h1 {
+  max-width: 22ch;
+  margin-bottom: var(--space-6);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.project-page-subtitle {
+  max-width: var(--measure-wide);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+/* ---- Мета-таблица (Роль / Срок / Инструменты) ---- */
+
+.project-page-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+}
+
+.project-page-meta-item .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.project-page-meta-item p {
+  font-size: var(--fs-body);
+  font-weight: 500;
+}
+
+/* ---- Обложка ---- */
+
+.project-page-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-block: var(--space-12);
+  background: var(--bg-subtle);
+}
+
+.project-page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---- Текстовые секции ---- */
+
+.project-page-section {
+  padding-block: var(--space-16);
+}
+
+.project-page-section h2 {
+  margin-bottom: var(--space-6);
+  max-width: 22ch;
+}
+
+.project-page-section p {
+  max-width: var(--measure-text);
+  color: var(--text-secondary);
+}
+
+.project-page-section p + p {
+  margin-top: var(--space-4);
+}
+
+.project-page-section ul {
+  max-width: var(--measure-text);
+  padding-left: var(--space-6);
+  color: var(--text-secondary);
+}
+
+.project-page-section ul li {
+  margin-bottom: var(--space-3);
+  line-height: var(--lh-body);
+}
+
+.project-page-section ul li::marker {
+  color: var(--scene-accent, var(--accent));
+}
+
+/* ---- Результаты (крупные цифры) ---- */
+
+.project-page-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.project-page-result {
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.project-page-result .stat {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--scene-accent, var(--accent));
+  margin-bottom: var(--space-3);
+}
+
+.project-page-result .stat-label {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+/* ---- Галерея изображений ---- */
+
+.project-page-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.project-page-gallery figure {
+  margin: 0;
+}
+
+.project-page-gallery img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  display: block;
+}
+
+.project-page-gallery figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+}
+
+.project-page-gallery .full {
+  grid-column: 1 / -1;
+}
+
+/* ---- Ссылки Figma / Behance ---- */
+
+.project-page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.project-page-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.project-page-link:hover {
+  border-color: var(--scene-accent, var(--accent));
+  color: var(--scene-accent, var(--accent));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-page-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---- Навигация по проектам внизу ---- */
+
+.project-page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.project-page-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.project-page-nav a:hover {
+  color: var(--scene-accent, var(--accent));
+}
+
+@media (max-width: 720px) {
+  .project-page-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page-hero {
+    padding-block: var(--space-12) var(--space-8);
+  }
+
+  .project-page-section {
+    padding-block: var(--space-12);
+  }
+}
+
+/* ==========================================================================
+   Апгрейд: мета-блок в стиле референса (Slava Barinov)
+   Пунктир сверху, mono-uppercase лейблы, values под ними
+   ========================================================================== */
+
+.project-page-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px dashed var(--border-strong);
+  margin-top: var(--space-8);
+}
+
+.project-page-meta-item .eyebrow {
+  margin-bottom: var(--space-2);
+  color: var(--text-tertiary);
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+.project-page-meta-item p {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Иконка проекта на фоне hero — мягкий blob с матовым размытием
+   Края полностью растворяются, текст поверх читается в любой теме
+   ========================================================================== */
+
+.project-page-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.project-page-hero > *:not(.project-hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+.project-hero-bg {
+  position: absolute;
+  top: 50%;
+  right: -50%;
+  width: min(72vw, 800px);
+  height: min(90vw, 1000px);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+  
+  /* Двойной blur: фильтр на контейнер + мягкий radial-gradient фон */
+  filter: blur(28px) saturate(120%);
+  
+  animation: hero-bg-pulse 8s ease-in-out infinite;
+}
+
+/* Размытый оранжевый фон внутри — края иконки растворяются в нём */
+.project-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 107, 53, 0.75) 0%,
+    rgba(255, 107, 53, 0.55) 35%,
+    rgba(255, 107, 53, 0.25) 65%,
+    transparent 100%
+  );
+}
+
+.project-hero-bg svg {
+  position: absolute;
+  inset: 15%;
+  width: 70%;
+  height: 70%;
+  display: block;
+  z-index: 1;
+}
+
+@keyframes hero-bg-pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.15);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 720px) {
+  .project-hero-bg {
+    width: 110vw;
+    height: 110vw;
+    right: -20%;
+    opacity: 0.45;
+    filter: blur(24px) saturate(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-hero-bg {
+    animation: none;
+    opacity: 0.5;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* ==========================================================================
+   Пронумерованные боли + блок «Задача» (Business / User point)
+   ========================================================================== */
+
+.pains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  max-width: var(--measure-wide);
+}
+
+.pain-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--scene-accent, #FF6B35) 25%, transparent);
+  background: color-mix(in srgb, var(--scene-accent, #FF6B35) 5%, transparent);
+}
+
+.pain-marker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--scene-accent, #FF6B35);
+  margin-bottom: var(--space-3);
+  line-height: 1;
+}
+
+.pain-card p {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+.task-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+  max-width: var(--measure-wide);
+}
+
+.task-half .eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--scene-accent, #FF6B35);
+}
+
+.task-half p:last-child {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+  color: var(--text-primary);
+}
+
+@media (max-width: 720px) {
+  .pains-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .task-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   Правка 1: hover-анимация тега "лупа"
+   ========================================================================== */
+
+.project-page-tag {
+  transition:
+    transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 320ms ease,
+    border-color 320ms ease;
+}
+
+.project-page-tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--scene-accent, var(--accent)) 30%, transparent);
+}
+
+/* ==========================================================================
+   Правка 3: карточки болей — шире на 15px каждая (+45 всего),
+   gap между ними +10px (24 → 34)
+   ========================================================================== */
+
+.pains-grid {
+  max-width: calc(var(--measure-wide) + 65px);
+  gap: 34px;
+}
+
+/* На мобилке — обычный однcolumn, правило не работает */
+@media (max-width: 720px) {
+  .pains-grid {
+    max-width: var(--measure-wide);
+    gap: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Hero: секция НЕ обрезает blob — пилюля и blob видны полностью.
+   Горизонтальный скролл гасим на уровне body (см. base.css).
+   ========================================================================== */
+
+.project-page-hero {
+  overflow: visible;
+}
+
+.project-hero-bg {
+  right: -50%;
+}
+
+/* ==========================================================================
+   Правка 3: карточки болей ещё шире (+70px)
+   ========================================================================== */
+
+.pains-grid {
+  max-width: calc(var(--measure-wide) + 135px);
+}
+
+/* ==========================================================================
+   Hover для карточек болей
+   Подъём + тень + усиление цвета фона и маркера
+   ========================================================================== */
+
+.pain-card {
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    background-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pain-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--scene-accent, #FF6B35) 55%, transparent);
+  background: color-mix(in srgb, var(--scene-accent, #FF6B35) 14%, transparent);
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--scene-accent, #FF6B35) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--scene-accent, #FF6B35) 12%, transparent);
+}
+
+.pain-marker {
+  transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pain-card:hover .pain-marker {
+  transform: scale(1.12);
+}
+
+.pain-card p {
+  transition: color 320ms ease;
+}
+
+.pain-card:hover p {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Hover для карточек результатов — та же логика
+   ========================================================================== */
+
+.project-page-result {
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    background-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-page-result:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--scene-accent, var(--accent)) 55%, transparent);
+  background: color-mix(in srgb, var(--scene-accent, var(--accent)) 8%, var(--bg-elevated));
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--scene-accent, var(--accent)) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--scene-accent, var(--accent)) 12%, transparent);
+}
+
+.project-page-result .stat {
+  transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-page-result:hover .stat {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Блок "Что я делал" — сетка карточек с ghost-номерами
+   ========================================================================== */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr; /* все строки одинаковой высоты */
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.process-card {
+  position: relative;
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  min-height: 180px; /* воздух + одинаковая высота для всех карточек */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ghost-номер — крупный, скрытый до hover */
+.process-num {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--scene-accent, var(--accent));
+  opacity: 0; /* не виден до hover */
+  pointer-events: none;
+  user-select: none;
+  transition:
+    opacity 420ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.process-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.75; /* больше воздуха */
+  transition: color 320ms ease;
+}
+
+/* Hover — подъём + акцентная тень + номер проявляется */
+.process-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--scene-accent, var(--accent)) 55%, transparent);
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--scene-accent, var(--accent)) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--scene-accent, var(--accent)) 12%, transparent);
+}
+
+.process-card:hover .process-num {
+  opacity: 0.35;
+  transform: scale(1.05);
+}
+
+.process-card:hover p {
+  color: var(--text-primary);
+}
+
+@media (max-width: 720px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Результаты: зачёркнутое "до" + акцентное "после"
+   ========================================================================== */
+
+.project-page-result .stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+
+/* Акцентное значение (новое) */
+.stat-after {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--scene-accent, var(--accent));
+  line-height: 1;
+}
+
+/* Зачёркнутое значение (старое) — тише и меньше */
+.stat-before {
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: color-mix(in srgb, var(--text-tertiary) 60%, transparent);
+  line-height: 1;
+}
+
+/* Нейтральные значения (без "до/после") */
+.stat--neutral {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Картинки внутри секций кейса
+   .project-page-figure           — одна картинка на всю ширину
+   .project-page-figure--pair     — пара картинок рядом
+   figcaption                     — подпись под картинкой
+   ========================================================================== */
+
+.project-page-figure {
+  margin: var(--space-10, 2.5rem) 0 var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.project-page-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.project-page-figure figcaption {
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  max-width: var(--measure-wide);
+}
+
+/* Пара картинок рядом — сетка 2 колонки */
+.project-page-figure--pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin: var(--space-10, 2.5rem) 0 var(--space-8);
+}
+
+.project-page-figure--pair figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.project-page-figure--pair img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.project-page-figure--pair figcaption {
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .project-page-figure--pair {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Секция "Тестирование": подзаголовки + вертикальный скролл-контейнер
+   ========================================================================== */
+
+.testing-subtitle {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--space-10, 2.5rem) 0 var(--space-4);
+}
+
+.project-page-section > .testing-subtitle:first-of-type {
+  margin-top: var(--space-8);
+}
+
+/* Контейнер "телевизор": фикс-высота, вертикальный скролл внутри */
+.testing-scroll {
+  position: relative;
+  margin: var(--space-10, 2.5rem) 0 var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  overflow: hidden;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.testing-scroll:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--scene-accent, var(--accent)) 55%, transparent);
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--scene-accent, var(--accent)) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--scene-accent, var(--accent)) 12%, transparent);
+}
+
+.testing-scroll-hint {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testing-scroll-viewport {
+  max-height: 620px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Тонкий скроллбар, аккуратный */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--scene-accent, var(--accent)) 55%, transparent) transparent;
+}
+
+.testing-scroll-viewport img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Webkit-скроллбар (Chrome, Safari, Edge) */
+.testing-scroll-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+.testing-scroll-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.testing-scroll-viewport::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--scene-accent, var(--accent)) 45%, transparent);
+  border-radius: 4px;
+}
+.testing-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--scene-accent, var(--accent)) 70%, transparent);
+}
+
+@media (max-width: 720px) {
+  .testing-scroll-viewport {
+    max-height: 420px;
+  }
+  .testing-scroll-hint {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}

@@ -1,0 +1,74 @@
+/* ==========================================================================
+   skills.css — стили страницы "Навыки"
+   ========================================================================== */
+
+.skills-section-title {
+  margin-bottom: var(--space-8);
+}
+
+.skills-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.skill-detail-card h3 {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-body-lg);
+}
+
+.skill-detail-card p {
+  color: var(--text-secondary);
+}
+
+.tools-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tools-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.tools-table td {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-body);
+}
+
+.tools-table td:first-child {
+  font-weight: 600;
+  width: 30%;
+}
+
+.tools-table td:last-child {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .skills-detailed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tools-table td:first-child {
+    width: auto;
+  }
+}
+
+.page-hero .hero-subtitle {
+  margin-inline: 0;
+  min-height: 0;
+}

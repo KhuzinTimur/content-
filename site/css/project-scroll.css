@@ -1,0 +1,298 @@
+/* ==========================================================================
+   project-scroll.css — секция проектов.
+
+   Механика скролла — JS-«магнит по остановке» (см. project-scroll.js):
+   когда пользователь прекращает скроллить и его центр экрана внутри
+   секции проектов, страница плавно доезжает до ближайшей сцены.
+   CSS scroll-snap убран сознательно — proximity оставлял «пропасти»
+   между сценами при лёгком скролле, mandatory запирал внутри секции.
+
+   Таймлайн активной сцены:
+     0 ms    картинка:    translateY(32px) scale(1.1) → 0 scale(1), opacity 0→1, 1000 мс
+     0 ms    затемнение:  opacity 0 → 1, 1000 мс
+     0 ms    заголовок:   translateY(48px) → 0, opacity 0 → 1, 700 мс
+     200 ms  описание:    то же, 700 мс
+     400 ms  CTA:         то же, 700 мс
+   ========================================================================== */
+
+
+/* ---- Сама сцена ---- */
+.project-scene {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 20px;
+}
+
+.project-scene-media-container {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ---- Картинка: стартовое состояние ---- */
+.project-scene-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+
+  transform: translateY(32px) scale(1.1);
+  opacity: 0;
+  transition:
+    transform 1000ms ease-out 0ms,
+    opacity   1000ms ease-out 0ms;
+}
+
+.project-scene-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---- Затемнение ---- */
+.project-scene-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background:
+    radial-gradient(80% 95% at 35% 45%, rgba(0, 0, 0, 0.85) 0%, transparent 85%),
+    radial-gradient(65% 80% at 70% 55%, rgba(0, 0, 0, 0.85) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 1000ms ease-out 0ms;
+}
+
+.project-scene-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-block: 3rem;
+  padding-inline: var(--container-padding);
+}
+
+/* ---- Заголовок: 0 мс ---- */
+.project-scene-content-inner {
+  transform: translateY(48px);
+  opacity: 0;
+  transition:
+    transform 700ms ease-out 0ms,
+    opacity   700ms ease-out 0ms;
+}
+
+/* ---- Описание: +200 мс ---- */
+.project-scene-content-desc {
+  transform: translateY(48px);
+  opacity: 0;
+  transition:
+    transform 700ms ease-out 200ms,
+    opacity   700ms ease-out 200ms;
+}
+
+/* ---- CTA: +400 мс ---- */
+.project-scene-content-cta {
+  transform: translateY(48px);
+  opacity: 0;
+  transition:
+    transform 700ms ease-out 400ms,
+    opacity   700ms ease-out 400ms;
+}
+
+/* ---- Типографика ---- */
+.project-scene-content h2 {
+  color: var(--scene-accent, #fff);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--space-6);
+  min-height: 1.15em;
+  max-width: 22ch;
+  margin-inline: auto;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.project-scene-content p {
+  color: #fff;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: var(--space-8);
+  min-height: 1.5em;
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
+.project-scene-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 56px;
+  padding: 0;
+  background: var(--scene-accent, #fff);
+  color: #fff;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition:
+    width 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-scene-cta:hover {
+  width: 236px;
+  letter-spacing: 0.06em;
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.35),
+    0 12px 40px color-mix(in srgb, var(--scene-accent, #fff) 45%, transparent);
+}
+
+.project-scene-cta:active {
+  width: 220px;
+  transform: translateY(0);
+  transition-duration: 120ms;
+}
+
+/* ---- Активная сцена ---- */
+.project-scene[data-active="true"] .project-scene-media {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.project-scene[data-active="true"] .project-scene-overlay {
+  opacity: 1;
+}
+
+.project-scene[data-active="true"] .project-scene-content-inner,
+.project-scene[data-active="true"] .project-scene-content-desc,
+.project-scene[data-active="true"] .project-scene-content-cta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ---- Уход — быстро, без задержек ---- */
+.project-scene[data-active="false"] .project-scene-media,
+.project-scene[data-active="false"] .project-scene-overlay,
+.project-scene[data-active="false"] .project-scene-content-inner,
+.project-scene[data-active="false"] .project-scene-content-desc,
+.project-scene[data-active="false"] .project-scene-content-cta {
+  transition-duration: 400ms;
+  transition-delay: 0ms;
+}
+
+.project-scene[data-active="false"] .project-scene-content {
+  pointer-events: none;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+
+  .project-scene-media,
+  .project-scene-overlay,
+  .project-scene-content-inner,
+  .project-scene-content-desc,
+  .project-scene-content-cta {
+    transition-duration: 250ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+}
+
+/* ---- Мобильная адаптация ----
+   На узких экранах снап выключаем: iOS Safari плохо дружит со scroll-snap
+   при инерционном скролле. Сцены становятся обычными блоками. */
+@media (max-width: 720px) {
+
+  .project-scene {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 70px;
+  }
+
+  .project-scene-media-container {
+    top: 70px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 16px;
+  }
+
+  .project-scene-content h2 {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+    max-width: 18ch;
+  }
+
+  .project-scene-content p {
+    font-size: 1rem;
+    max-width: 32ch;
+  }
+
+    .project-scene-cta {
+    width: 190px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .project-scene-cta:hover {
+    width: 206px;
+  }
+}
+
+/* ==========================================================================
+   Фикс: iPhone 14 Pro в горизонтальной ориентации (~852×393px)
+   Ландшафт по ширине > 720px, поэтому мобильный медиазапрос не срабатывает.
+   Добавляем отдельное правило для landscape на телефонах.
+   ========================================================================== */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .project-scene {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+
+  .project-scene-media-container {
+    top: 60px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 16px;
+  }
+
+  .project-scene-content {
+    padding-block: 1.5rem;
+  }
+
+  .project-scene-content h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    max-width: 22ch;
+  }
+
+  .project-scene-content p {
+    font-size: 0.95rem;
+  }
+
+  .project-scene-cta {
+    width: 180px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+}

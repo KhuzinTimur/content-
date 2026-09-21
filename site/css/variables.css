@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Design tokens — единый источник правды для цвета, типографики, сетки.
+   Тема переключается через атрибут data-theme на <html>.
+   ========================================================================== */
+
+:root {
+    /* ---- Типографика ---- */
+  --font-display: 'Days', 'Inter', sans-serif;
+  --font-body: 'Albra', 'Inter', sans-serif;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  --fs-hero: clamp(2.75rem, 6vw, 5.5rem);
+  --fs-h1: clamp(2.25rem, 4vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* line-height подобран под конкретный размер — крупный текст требует
+     более плотного межстрочья, мелкий текст — более свободного */
+  --lh-hero: 1.05;
+  --lh-h1: 1.2;
+  --lh-h2: 1.25;
+  --lh-h3: 1.35;
+  --lh-body-lg: 1.6;
+  --lh-body: 1.6;
+  --lh-small: 1.5;
+  --lh-micro: 1.4;
+
+  /* letter-spacing: крупные заголовки чуть сжимаем, мелкий текст в верхнем
+     регистре (eyebrow, лейблы) — разрежаем для читаемости */
+  --ls-hero: -0.03em;
+  --ls-h1: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-h3: -0.01em;
+  --ls-body: 0;
+  --ls-eyebrow: 0.08em;
+
+  /* ---- Сетка / отступы ----
+     container-max — общая ширина "рабочей зоны" страницы (хедер, широкие блоки).
+     measure — ширина именно текстовой колонки: длинный текст на очень широких
+     мониторах читать неудобно, поэтому параграфы и заголовки кейсов ограничены
+     отдельно, уже контейнера. Ориентир — 60–75 символов в строке. */
+  --container-max: 1200px;
+  --container-padding: clamp(1.25rem, 5vw, 3rem);
+  --measure-text: 42rem;   /* ~65-70 символов на средний body-текст */
+  --measure-wide: 56rem;   /* для текста побольше, например текст-body-lg */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* ---- Переходы ---- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms var(--ease);
+  --transition-base: 250ms var(--ease);
+  --transition-slow: 450ms var(--ease);
+}
+
+/* ==========================================================================
+   Светлая тема (по умолчанию)
+   ========================================================================== */
+:root,
+[data-theme="light"] {
+  --bg: #F2F3F5;
+  --bg-elevated: #FAFAFC;
+  --bg-subtle: #E6E8EC;
+  --bg-inverse: #2F3847;
+
+  --text-primary: #2F3847;
+  --text-secondary: #4A5568;
+  --text-tertiary: #7A8394;
+  --text-inverse: #E8E9EC;
+
+  --border: #D8D9DE;
+  --border-strong: #A0A09D;
+
+  /* Градиент заголовков — от тёмного slate слева к чуть светлее справа */
+  --title-gradient: linear-gradient(90deg, #2F3847 0%, #4A5568 100%);
+
+  /* Акцент оставляем — фиолетовый с холодным серым сочетается хорошо */
+  --accent: #7C3AED;
+  --accent-hover: #6D28D9;
+  --accent-pressed: #5B21B6;
+  --accent-soft: #EFEBFC;
+  --accent-contrast: #FFFFFF;
+  --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 55%, #6D28D9 100%);
+
+  --shadow-sm: 0 1px 2px rgba(23, 23, 26, 0.06);
+  --shadow-md: 0 4px 16px rgba(23, 23, 26, 0.08);
+  --shadow-lg: 0 12px 40px rgba(23, 23, 26, 0.12);
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Тёмная тема
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg: #15181F;
+  --bg-elevated: #1E222A;
+  --bg-subtle: #22262E;
+  --bg-inverse: #E8E9EC;
+
+  --text-primary: #E8E9EC;
+  --text-secondary: #A8AEBB;
+  --text-tertiary: #757C8A;
+  --text-inverse: #2F3847;
+
+  --border: #2E3238;
+  --border-strong: #444A54;
+
+  /* В тёмной теме градиент идёт от светлого к чуть темнее —
+     иначе правый край заголовка «утонет» в фоне */
+  --title-gradient: linear-gradient(90deg, #F2F3F5 0%, #B8C0CC 100%);
+
+  --accent: #A78BFA;
+  --accent-hover: #C4B5FD;
+  --accent-pressed: #8B5CF6;
+  --accent-soft: #241C3F;
+  --accent-contrast: #1A1523;
+  --accent-gradient: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 55%, #7C3AED 100%);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}

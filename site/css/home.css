@@ -1,0 +1,1469 @@
+/* ==========================================================================
+   home.css — стили, специфичные для главной страницы
+   ========================================================================== */
+
+/* ---- Header / Nav ---- */
+.site-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  /* Стеклянный эффект: полупрозрачный фон + blur + лёгкое насыщение */
+  background: color-mix(in srgb, var(--bg) 20%, transparent);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+          backdrop-filter: blur(40px) saturate(160%);
+  border-bottom: 1px solid transparent;
+
+  transform: translateY(0);
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.site-header-wrap.header-hidden {
+  transform: translateY(-100%);
+}
+
+.site-header-wrap.header-elevated {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* В тёмной теме фон чуть плотнее — на чёрном прозрачность почти не видна */
+[data-theme="dark"] .site-header-wrap {
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+}
+
+[data-theme="dark"] .site-header-wrap.header-elevated {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--space-4);
+  gap: var(--space-8);
+}
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  line-height: 1;
+  color: inherit;
+}
+
+.logo-name {
+  font-weight: 700;
+  font-size: var(--fs-body-lg);
+  letter-spacing: var(--ls-h3);
+}
+
+.logo-role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-12);
+  list-style: none;
+}
+
+.nav-links > li > a {
+  position: relative;
+  display: inline-block;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+/* Невидимая жирная копия текста — резервирует ширину,
+   чтобы соседние пункты не сдвигались при hover */
+.nav-links > li > a::before {
+  content: attr(data-text);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Плавное подчёркивание слева направо */
+.nav-links > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-gradient);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links > li > a:hover {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.nav-links > li > a:hover::after {
+  transform: scaleX(1);
+}
+
+/* То же самое — для триггера выпадающего списка «Проекты» */
+.nav-dropdown-trigger {
+  position: relative;
+}
+
+.nav-dropdown-trigger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 14px; /* не подчёркиваем стрелку */
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-gradient);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger,
+.nav-dropdown-trigger[aria-expanded="true"] {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger::after,
+.nav-dropdown-trigger[aria-expanded="true"]::after {
+  transform: scaleX(1);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+/* ---- Переключатели ---- */
+.control-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 2px;
+}
+
+.control-group:hover {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+
+.control-segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 28px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+  background: transparent;
+  border: none;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.control-segment:hover {
+  color: var(--text-secondary);
+}
+
+.control-segment[data-active="true"] {
+  background: var(--accent-gradient);
+  color: var(--accent-contrast);
+  box-shadow:
+    0 2px 8px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent) inset;
+}
+
+.control-segment:not([data-active="true"]):hover {
+  color: var(--accent);
+}
+
+.control-segment:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ==========================================================================
+   Выпадающий список «Projects»
+   ========================================================================== */
+
+.nav-dropdown {
+  position: relative;
+  list-style: none;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: var(--fs-small);
+  line-height: 1;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none; 
+  transition: color var(--transition-fast), font-weight var(--transition-fast);
+}
+
+/* Скрытая жирная копия текста — резервирует ширину, чтобы при hover
+   жирное начертание не сдвигало соседей и не дёргало стрелку */
+.nav-dropdown-trigger > span[data-i18n]::before {
+  content: attr(data-text);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+.nav-dropdown-trigger[aria-expanded="true"] {
+  color: var(--text-primary);
+}
+
+.nav-dropdown-caret {
+  display: block;
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px;
+  min-height: 12px;
+  max-width: 12px;
+  max-height: 12px;
+  flex: 0 0 12px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown-trigger[aria-expanded="true"] .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+ul.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 200px;
+  padding: var(--space-2);
+  margin: 0;
+  list-style: none;
+  list-style-type: none;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast),
+    visibility var(--transition-fast);
+  z-index: 200;
+}
+
+ul.nav-dropdown-menu li {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav-dropdown-menu li::marker {
+  content: "";
+  display: none;
+}
+
+/* Невидимый мостик между триггером и меню */
+ul.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--space-3));
+  left: 0;
+  right: 0;
+  height: var(--space-3);
+}
+
+/* Открыто — только когда JS поставил aria-expanded="true" */
+.nav-dropdown-trigger[aria-expanded="true"] + ul.nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+ul.nav-dropdown-menu a {
+  position: relative;
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    font-weight var(--transition-fast);
+}
+
+/* Невидимая жирная копия — резервирует ширину, чтобы при hover
+   жирность не сдвигала текст */
+ul.nav-dropdown-menu a::before {
+  content: attr(data-text);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Подчёркивание слева-направо */
+ul.nav-dropdown-menu a::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 4px;
+  height: 1.5px;
+  border-radius: 1.5px;
+  background: var(--item-accent, var(--accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+ul.nav-dropdown-menu a:hover {
+  color: var(--item-accent, var(--text-primary));
+  background: color-mix(in srgb, var(--item-accent, #888) 12%, transparent);
+  font-weight: 700;
+}
+
+ul.nav-dropdown-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---- Фоновые blob'ы (живут на уровне body, за всем контентом) ---- */
+
+.bg-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  /* Мягкое затухание вниз — blob'ы растворяются, не обрываются */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    color-mix(in srgb, var(--accent) 70%, white) 0%,
+    var(--accent) 30%,
+    color-mix(in srgb, var(--accent) 55%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  /* GPU-слой — анимация transform идёт по композитору, гладко */
+  transform: translate3d(0, 0, 0);
+}
+
+.bg-blob--1 {
+  width: 45vw;
+  aspect-ratio: 1 / 1;
+  top: -8%;
+  right: -10%;
+  filter: blur(70px);
+  animation: blob-float-1 14s ease-in-out infinite;
+}
+
+.bg-blob--2 {
+  width: 32vw;
+  aspect-ratio: 1 / 1;
+  top: 22%;
+  right: 0;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: blob-float-2 18s ease-in-out infinite;
+}
+
+.bg-blob--3 {
+  width: 26vw;
+  aspect-ratio: 1 / 1;
+  top: 48%;
+  right: 18%;
+  filter: blur(50px);
+  opacity: 0.35;
+  animation: blob-float-3 22s ease-in-out infinite;
+}
+
+@keyframes blob-float-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(-14%, 10%, 0) scale(1.12); }
+  66%      { transform: translate3d(10%, -12%, 0) scale(0.9); }
+}
+
+@keyframes blob-float-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(18%, 14%, 0) scale(1.18); }
+}
+
+@keyframes blob-float-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(-22%, -8%, 0) scale(0.88); }
+  66%      { transform: translate3d(14%, 16%, 0) scale(1.1); }
+}
+
+/* Если в системе включено «уменьшить движение» — не отключаем анимацию,
+   а делаем её быстрой и мягкой, чтобы элемент всё равно жил, но не мельтешил */
+@media (prefers-reduced-motion: reduce) {
+  .bg-blob--1 { animation-duration: 40s; }
+  .bg-blob--2 { animation-duration: 50s; }
+  .bg-blob--3 { animation-duration: 60s; }
+}
+
+[data-theme="dark"] .bg-blob     { opacity: 0.7; }
+[data-theme="dark"] .bg-blob--2  { opacity: 0.55; }
+[data-theme="dark"] .bg-blob--3  { opacity: 0.5; }
+
+@media (max-width: 900px) {
+  .bg-blobs { display: none; }
+}
+
+/* ==========================================================================
+   Hero — по референсу: 1 / 1(2 блока) / 1
+   - name сверху, тонко
+   - заголовок 3 строки, огромный, по центру
+   - вторая строка: ДИЗАЙНЕР & слева + описание справа, центрированы по вертикали
+   - marquee + ПОРТФОЛИО прижаты к низу
+   ========================================================================== */
+
+.hero {
+  --hero-title-size: clamp(2rem, 5.5vw, 5.5rem);
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-block: clamp(2rem, 4vh, 3rem) clamp(1.5rem, 3vh, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Имя сверху — тонкое, разреженное */
+.hero-name {
+  margin: 0;
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Три строки заголовка — плотно, без зазоров */
+.hero-headline {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--hero-title-size);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Средняя строка: ДИЗАЙНЕР & слева + описание справа, по одной вертикали */
+.hero-row-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+}
+
+.hero-title--middle {
+  text-align: left;
+}
+
+.hero-desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.95vw, 0.95rem);
+  line-height: 1.45;
+  color: var(--text-primary);
+  max-width: 340px;
+  text-align: left;
+}
+
+/* ПОРТФОЛИО */
+.hero-portfolio {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* Прижимаем marquee + ПОРТФОЛИО к низу — вся пустота остаётся
+   между заголовком и этой связкой */
+.skills-marquee {
+  margin-top: clamp(7rem, 7vh, 7rem);
+  padding-top: 0;
+}
+
+.hero > .container:last-child {
+  margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
+}
+
+/* Планшет/мобилка: ДИЗАЙНЕР & и описание — стопкой */
+@media (max-width: 720px) {
+  .hero {
+    min-height: auto;
+    padding-block: 2rem 1.5rem;
+  }
+  .hero-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+  }
+  .hero-headline {
+    margin-top: 1.5rem;
+  }
+  .hero-row-middle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .hero-desc {
+    max-width: 100%;
+    font-size: 0.85rem;
+  }
+  .skills-marquee {
+    margin-top: 2rem;
+    padding-top: 0;
+  }
+}
+
+/* ---- Projects grid ---- */
+.projects-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.project-card {
+  background: var(--bg-elevated);
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition-fast);
+}
+
+.project-card:hover {
+  background: var(--bg-subtle);
+}
+
+.project-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+.project-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-card-media img {
+  transform: scale(1.03);
+}
+
+.project-card-body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex-grow: 1;
+  min-height: 220px;
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.project-card h3 {
+  max-width: 22ch;
+  min-height: 2.7em;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  padding-top: var(--space-1);
+}
+
+.project-card-desc {
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+  flex-grow: 1;
+  min-height: 3.2em;
+}
+
+.project-card-result {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.project-card-result .stat {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.project-card-result .stat-label {
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+}
+
+/* ---- About teaser ---- */
+.about-teaser {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.about-teaser-text p.text-secondary {
+  min-height: 4.8em;
+}
+
+.about-teaser-text p + p {
+  margin-top: var(--space-4);
+}
+
+.advantages-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.advantages-list li {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.advantages-list li:last-child {
+  border-bottom: none;
+}
+
+.advantages-list h4 {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  min-height: 1.4em;
+}
+
+.advantages-list p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  min-height: 2.2em;
+}
+
+/* ---- Skills marquee ---- */
+
+.skills-section {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-6) var(--space-16);
+}
+
+.skills-section .divider {
+  margin-bottom: var(--space-12);   /* ≈ 48 px между линией и лентой */
+}
+
+.skills-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: var(--space-2);
+
+  /* Мягкое растворение пилюль по краям */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.skills-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: skills-marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.skills-marquee-group {
+  display: flex;
+  gap: 2.5rem;             /* было 1rem, теперь x2.5 */
+  padding-right: 2.5rem;   /* равно gap — чтобы не было шва на стыке копий */
+  flex-shrink: 0;
+}
+
+@keyframes skills-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---- Пилюля навыка: стиль как у переключателя языка ---- */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  color: var(--accent);
+  font-size: var(--fs-small);
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.skill-pill:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+/* Уважение к системной настройке «уменьшить движение» */
+@media (prefers-reduced-motion: reduce) {
+  .skills-marquee-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
+/* На мобилке лента чуть быстрее */
+@media (max-width: 720px) {
+  .skills-marquee-track {
+    animation-duration: 25s;
+  }
+}
+
+/* ---- Contact section ---- */
+.contact-section {
+  padding-block: var(--space-24);
+}
+
+.contact-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+}
+
+.contact-centered h2 {
+  font-weight: 700;
+}
+
+.contact-invite {
+  color: var(--text-secondary);
+  font-size: var(--fs-body-lg);
+  min-height: 1.6em;
+}
+
+.contact-icons {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.contact-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact-icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.site-footer {
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Адаптив
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .about-teaser {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding-block: var(--space-16) var(--space-12);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section, .section-lg {
+    padding-block: var(--space-12);
+  }
+
+  .contact-section {
+    padding-block: var(--space-16);
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---- Pressed-состояния интерактивных элементов ---- */
+.control-segment:active {
+  transform: scale(0.95);
+}
+
+.project-scene-cta:active {
+  transform: scale(1.02);
+}
+
+.contact-icon-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.project-card:active {
+  transform: scale(0.99);
+}
+
+/* ==========================================================================
+   Универсальная ссылка с выезжающей стрелкой
+   ========================================================================== */
+
+.link-more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--accent);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1.5px;
+  transition:
+    background-size 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    color var(--transition-fast);
+}
+
+/* Стрелка, выезжающая при hover. Размер фиксируем в em,
+   вертикаль выравнивает flex-родитель. */
+.link-more::after {
+  content: "→";
+  display: inline-block;
+  font-size: 0.9em;
+  line-height: 1;
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    max-width 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    margin-left 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease,
+    transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-more:hover {
+  background-size: 100% 1.5px;
+}
+
+.link-more:hover::after {
+  max-width: 1.2em;
+  margin-left: 0.35em;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* На тач-устройствах hover нет — стрелка видна сразу */
+@media (hover: none) {
+  .link-more::after {
+    max-width: 1.4em;
+    margin-left: 0.35em;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Кастомный курсор — двойной: инвертирующее кольцо + фиолетовая точка
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  /* Скрываем системный курсор */
+  html, body,
+  a, button, input, textarea, select, [role="button"] {
+    cursor: none;
+  }
+
+  .cursor-ring,
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+    will-change: transform;
+    transition:
+      width 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      height 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 260ms ease,
+      background-color 260ms ease,
+      opacity 200ms ease;
+  }
+
+  /* Внешнее кольцо — инвертирует всё под собой */
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    mix-blend-mode: difference;
+  }
+
+  /* Внутренняя точка — фиолетовая, брендовая */
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .cursor-ring.is-visible,
+  .cursor-dot.is-visible {
+    opacity: 1;
+  }
+
+  /* Hover на интерактивных элементах: кольцо растёт, точка сжимается */
+  .cursor-ring.is-hover {
+    width: 68px;
+    height: 68px;
+    border-width: 1px;
+  }
+
+  .cursor-dot.is-hover {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Клик: кольцо сжимается, точка растёт */
+  .cursor-ring.is-down {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cursor-dot.is-down {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* На тач-устройствах — отключаем */
+@media (hover: none), (pointer: coarse) {
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
+}
+
+/* Уважение к reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring,
+  .cursor-dot {
+    transition: none;
+  }
+}
+
+
+/* ==========================================================================
+   Мобильное меню — fullscreen overlay
+   ========================================================================== */
+
+/* Кнопка-гамбургер. Видна только когда .nav-links скрыт (≤720px). */
+.nav-burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  position: relative;
+  z-index: 200;
+  cursor: pointer;
+}
+
+.nav-burger span {
+  position: absolute;
+  left: 50%;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 200ms ease,
+    background-color var(--transition-fast);
+}
+
+.nav-burger span:nth-child(1) { top: 15px; }
+.nav-burger span:nth-child(2) { top: 23px; }
+
+.nav-burger[aria-expanded="true"] span:nth-child(1) {
+  top: 19px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.nav-burger[aria-expanded="true"] span:nth-child(2) {
+  top: 19px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+@media (max-width: 720px) {
+  .nav-burger { display: inline-flex; }
+}
+
+/* Полноэкранный оверлей */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background:
+    radial-gradient(60% 70% at 80% 20%, color-mix(in srgb, var(--accent) 25%, transparent) 0%, transparent 70%),
+    color-mix(in srgb, var(--bg) 94%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+          backdrop-filter: blur(24px) saturate(150%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-inner {
+  min-height: 100%;
+  padding: 100px var(--container-padding) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  justify-content: center;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* Основные пункты меню — крупные */
+.mobile-menu-link {
+  display: block;
+  padding: var(--space-3) 0;
+  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color var(--transition-fast), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.mobile-menu.is-open .mobile-menu-link,
+.mobile-menu.is-open .mobile-menu-group {
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    color var(--transition-fast);
+}
+
+/* Каскадное появление пунктов */
+.mobile-menu.is-open .mobile-menu-inner > *:nth-child(1) { transition-delay: 60ms; }
+.mobile-menu.is-open .mobile-menu-inner > *:nth-child(2) { transition-delay: 120ms; }
+.mobile-menu.is-open .mobile-menu-inner > *:nth-child(3) { transition-delay: 180ms; }
+.mobile-menu.is-open .mobile-menu-inner > *:nth-child(4) { transition-delay: 240ms; }
+.mobile-menu.is-open .mobile-menu-inner > *:nth-child(5) { transition-delay: 300ms; }
+
+.mobile-menu-link:hover,
+.mobile-menu-link:focus-visible {
+  color: var(--accent);
+}
+
+/* Группа с раскрывающимся списком проектов */
+.mobile-menu-group {
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.mobile-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.mobile-menu-caret {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-trigger[aria-expanded="true"] {
+  color: var(--accent);
+}
+
+.mobile-menu-trigger[aria-expanded="true"] .mobile-menu-caret {
+  transform: rotate(180deg);
+}
+
+/* Подменю проектов */
+.mobile-menu-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: var(--space-2);
+  margin-bottom: var(--space-3);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-trigger[aria-expanded="true"] + .mobile-menu-sub {
+  max-height: 400px;
+}
+
+.mobile-menu-sub a {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-body-lg);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.mobile-menu-sub a:hover,
+.mobile-menu-sub a:focus-visible {
+  color: var(--item-accent, var(--accent));
+  background: color-mix(in srgb, var(--item-accent, var(--accent)) 10%, transparent);
+}
+
+.mobile-menu-sub a::before {
+  content: "→";
+  display: inline-block;
+  margin-right: var(--space-3);
+  color: var(--item-accent, var(--accent));
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* Футер меню — соцсети */
+.mobile-menu-footer {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.mobile-menu.is-open .mobile-menu-footer {
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) 380ms,
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1) 380ms;
+}
+
+.mobile-menu-footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.mobile-menu-footer a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.mobile-menu-footer svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Блокируем скролл body, пока меню открыто */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* На десктопе оверлей не должен мешать */
+@media (min-width: 721px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Фикс: триггер "Проекты" — теперь <a>, наследует inline-block
+   от .nav-links > li > a. Перебиваем явно + убираем лишнюю ::before.
+   ========================================================================== */
+
+.nav-links > li > a.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+}
+
+.nav-links > li > a.nav-dropdown-trigger::before {
+  display: none;
+}
+
+.nav-links > li > a.nav-dropdown-trigger::after {
+  /* убираем автоматическое подчёркивание от .nav-links > li > a::after —
+     у триггера своя анимация через .nav-dropdown-trigger::after */
+  right: 14px;
+}
+
+/* ==========================================================================
+   Мобильное меню: фиксы с реального iPhone
+   1. Одинаковые отступы между всеми пунктами
+   2. Центрирование по горизонтали + размер +1.2
+   3. При раскрытии "Проекты" — верхние пункты не уезжают
+   ========================================================================== */
+
+.mobile-menu-inner {
+  /* Было justify-content: center — теперь flex-start + padding-top,
+     чтобы при раскрытии подменю верхние пункты не сдвигались */
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding-top: 20vh;
+  padding-bottom: 40px;
+  gap: var(--space-3);
+}
+
+/* Убираем лишний margin у подменю — он давал неравные отступы
+   вокруг группы "Проекты" */
+.mobile-menu-sub {
+  margin-bottom: 0;
+  padding-left: 0;
+  align-items: center;
+}
+
+/* Каждый пункт меню — по центру, крупнее */
+.mobile-menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(2.1rem, 8.4vw, 3rem);
+  width: 100%;
+}
+
+/* Триггер проектов — тоже центрируем содержимое */
+.mobile-menu-trigger {
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* Подпункты проектов — по центру */
+.mobile-menu-sub a {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Убираем стрелку "→" у подпунктов — она мешает центровке */
+.mobile-menu-sub a::before {
+  display: none;
+}
+
+/* Футер меню — по центру */
+.mobile-menu-footer {
+  justify-content: center;
+  align-self: stretch;
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timur Khuzin — UX/UI Designer</title>
+  <meta name="description" content="UX/UI дизайнер, пришедший в дизайн из нефтегазовой инженерии. Портфолио: Ozon, GitVerse, OKKTA, Prokennex, ElevateU.">
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/project-scroll.css">
+</head>
+<body>
+
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+  </div>
+
+  <div class="site-header-wrap">
+    <div class="container">
+      <header class="site-header">
+        <a href="index.html" class="logo">
+          <span class="logo-name">Timur Khuzin</span>
+          <span class="logo-role" data-i18n="logo.role"></span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-dropdown">
+              <a href="#projects" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+  <span data-i18n="nav.projects"></span>
+  <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"></polyline>
+  </svg>
+</a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #FF6B35;"><a href="projects/ozon.html" data-i18n="nav.project.ozon"></a></li>
+                <li style="--item-accent: #4A9EFF;"><a href="projects/gitverse.html" data-i18n="nav.project.gitverse"></a></li>
+                <li style="--item-accent: #4ADE80;"><a href="projects/okkta.html" data-i18n="nav.project.okkta"></a></li>
+                <li style="--item-accent: #F5573B;"><a href="projects/prokennex.html" data-i18n="nav.project.prokennex"></a></li>
+                <li style="--item-accent: #8B7CF6;"><a href="projects/elevateu.html" data-i18n="nav.project.elevateu"></a></li>
+              </ul>
+            </li>
+            <li class="nav-dropdown">
+  <a href="about.html" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+    <span data-i18n="nav.about"></span>
+    <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+  <ul class="nav-dropdown-menu">
+    <li style="--item-accent: #7C3AED;"><a href="about.html" data-i18n="nav.about"></a></li>
+    <li style="--item-accent: #7C3AED;"><a href="about.html#cv" data-i18n="nav.about.cv"></a></li>
+  </ul>
+</li>
+            <li><a href="skills.html" data-i18n="nav.skills"></a></li>
+            <li><a href="index.html#contact" data-i18n="nav.contacts"></a></li>
+          </ul>
+        </nav>
+        
+        <button type="button" class="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="header-controls">
+          <div class="control-group" role="group" data-i18n-aria-label="theme.toggle.label">
+            <button class="control-segment" data-lang-set="ru">RU</button>
+            <button class="control-segment" data-lang-set="en">EN</button>
+          </div>
+
+          <button class="theme-toggle" data-theme-toggle data-i18n-aria-label="theme.toggle.label">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-name" data-i18n="hero.name"></p>
+  </div>
+
+  <div class="container hero-headline">
+  <h1 class="hero-title hero-title--top" data-i18n="hero.title.top"></h1>
+  <div class="hero-row-middle">
+    <h1 class="hero-title hero-title--middle" data-i18n="hero.title.middle"></h1>
+    <p class="hero-desc" data-i18n="hero.desc"></p>
+  </div>
+  <h1 class="hero-title hero-title--bottom" data-i18n="hero.title.bottom"></h1>
+</div>
+
+  <div class="skills-marquee">
+    <div class="skills-marquee-track">
+      <div class="skills-marquee-group">
+        <span class="skill-pill">Figma</span>
+        <span class="skill-pill">UX Research</span>
+        <span class="skill-pill">Prototyping</span>
+        <span class="skill-pill">Usability Testing</span>
+        <span class="skill-pill">User Flow</span>
+        <span class="skill-pill">CJM</span>
+        <span class="skill-pill">Design Systems</span>
+        <span class="skill-pill">UI Design</span>
+        <span class="skill-pill">After Effects</span>
+        <span class="skill-pill">Tilda</span>
+        <span class="skill-pill">Claude</span>
+        <span class="skill-pill">Photoshop</span>
+        <span class="skill-pill">HTML / CSS</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">AI Tools</span>
+      </div>
+      <div class="skills-marquee-group" aria-hidden="true">
+        <span class="skill-pill">Figma</span>
+        <span class="skill-pill">UX Research</span>
+        <span class="skill-pill">Prototyping</span>
+        <span class="skill-pill">Usability Testing</span>
+        <span class="skill-pill">User Flow</span>
+        <span class="skill-pill">CJM</span>
+        <span class="skill-pill">Design Systems</span>
+        <span class="skill-pill">UI Design</span>
+        <span class="skill-pill">After Effects</span>
+        <span class="skill-pill">Tilda</span>
+        <span class="skill-pill">Claude</span>
+        <span class="skill-pill">Photoshop</span>
+        <span class="skill-pill">HTML / CSS</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">AI Tools</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <p class="hero-portfolio" data-i18n="hero.portfolio"></p>
+  </div>
+</section>
+
+    <!-- ================= PROJECTS (cinematic scroll scenes) ================= -->
+    <section id="projects">
+      
+      <div class="project-scene" data-active="false" style="--scene-accent: #FF6B35;">
+        <div class="project-scene-media-container">
+          <div class="project-scene-media">
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/front%20page.png?raw=true" alt="" loading="lazy">
+          </div>
+          <div class="project-scene-overlay"></div>
+        </div>
+        <div class="project-scene-content">
+          <h2 class="project-scene-content-inner" data-i18n="scene.ozon.title"></h2>
+          <p class="project-scene-content-desc" data-i18n="scene.ozon.desc"></p>
+          <a href="projects/ozon.html" class="project-scene-cta project-scene-content-cta" data-i18n="scene.ozon.cta"></a>
+        </div>
+      </div>
+
+      <div class="project-scene" data-active="false" style="--scene-accent: #4A9EFF;">
+        <div class="project-scene-media-container">
+          <div class="project-scene-media">
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/05-SberTechGitVerse/images/gitverse-cover.jpeg?raw=true" alt="" loading="lazy">
+          </div>
+          <div class="project-scene-overlay"></div>
+        </div>
+        <div class="project-scene-content">
+          <h2 class="project-scene-content-inner" data-i18n="scene.gitverse.title"></h2>
+          <p class="project-scene-content-desc" data-i18n="scene.gitverse.desc"></p>
+          <a href="projects/gitverse.html" class="project-scene-cta project-scene-content-cta" data-i18n="scene.gitverse.cta"></a>
+        </div>
+      </div>
+
+      <div class="project-scene" data-active="false" style="--scene-accent: #4ADE80;">
+        <div class="project-scene-media-container">
+          <div class="project-scene-media">
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/04-HakatonOkkta/images/02_Slide.jpg?raw=true" alt="" loading="lazy">
+          </div>
+          <div class="project-scene-overlay"></div>
+        </div>
+        <div class="project-scene-content">
+          <h2 class="project-scene-content-inner" data-i18n="scene.okkta.title"></h2>
+          <p class="project-scene-content-desc" data-i18n="scene.okkta.desc"></p>
+          <a href="projects/okkta.html" class="project-scene-cta project-scene-content-cta" data-i18n="scene.okkta.cta"></a>
+        </div>
+      </div>
+
+      <div class="project-scene" data-active="false" style="--scene-accent: #F5573B;">
+        <div class="project-scene-media-container">
+          <div class="project-scene-media">
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/02-Prokennex/images/prokennex-cover.jpg?raw=true" alt="" loading="lazy">
+          </div>
+          <div class="project-scene-overlay"></div>
+        </div>
+        <div class="project-scene-content">
+          <h2 class="project-scene-content-inner" data-i18n="scene.prokennex.title"></h2>
+          <p class="project-scene-content-desc" data-i18n="scene.prokennex.desc"></p>
+          <a href="projects/prokennex.html" class="project-scene-cta project-scene-content-cta" data-i18n="scene.prokennex.cta"></a>
+        </div>
+      </div>
+
+      <div class="project-scene" data-active="false" style="--scene-accent: #8B7CF6;">
+        <div class="project-scene-media-container">
+          <div class="project-scene-media">
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/01-Elevateu/images/0_Logo.jpeg?raw=true" alt="" loading="lazy">
+          </div>
+          <div class="project-scene-overlay"></div>
+        </div>
+        <div class="project-scene-content">
+          <h2 class="project-scene-content-inner" data-i18n="scene.elevateu.title"></h2>
+          <p class="project-scene-content-desc" data-i18n="scene.elevateu.desc"></p>
+          <a href="projects/elevateu.html" class="project-scene-cta project-scene-content-cta" data-i18n="scene.elevateu.cta"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT TEASER ================= -->
+    <section class="container section">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="about-teaser">
+        <div class="about-teaser-text">
+          <p class="eyebrow" data-i18n="about.eyebrow"></p>
+          <h2 style="margin-bottom: var(--space-6);" data-i18n="about.title"></h2>
+          <p class="text-secondary" data-i18n="about.p1"></p>
+          <p class="text-secondary" data-i18n="about.p2"></p>
+          <p style="margin-top: var(--space-6);"><a href="about.html" class="link-more" data-i18n="about.readMore"></a></p>
+        </div>
+
+        <div>
+          <p class="eyebrow" style="margin-bottom: var(--space-4);" data-i18n="advantages.title"></p>
+          <ul class="advantages-list">
+            <li>
+              <h4 data-i18n="advantages.systemic.title"></h4>
+              <p data-i18n="advantages.systemic.desc"></p>
+            </li>
+            <li>
+              <h4 data-i18n="advantages.analytical.title"></h4>
+              <p data-i18n="advantages.analytical.desc"></p>
+            </li>
+            <li>
+              <h4 data-i18n="advantages.constraints.title"></h4>
+              <p data-i18n="advantages.constraints.desc"></p>
+            </li>
+            <li>
+              <h4 data-i18n="advantages.teams.title"></h4>
+              <p data-i18n="advantages.teams.desc"></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="container contact-section" id="contact">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="contact-centered">
+        <h2 data-i18n="contact.title"></h2>
+        <p class="contact-invite" data-i18n="contact.invite"></p>
+
+        <div class="contact-icons">
+          <a href="mailto:TimurKhuzin92@gmail.com" class="contact-icon-btn" data-i18n-aria-label="contact.emailAria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+          <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.telegramAria">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.whatsappAria">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2zm0 18.15h-.01c-1.52 0-3.02-.41-4.32-1.18l-.31-.18-3.21.84.86-3.13-.2-.32a8.07 8.07 0 0 1-1.24-4.29c0-4.47 3.64-8.11 8.13-8.11 2.17 0 4.21.85 5.74 2.39a8.07 8.07 0 0 1 2.38 5.73c0 4.47-3.64 8.15-8.11 8.15zm4.46-6.08c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.78.95-.14.16-.29.18-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.11-.49.12-.11.24-.29.36-.44.12-.15.16-.26.24-.43.08-.17.04-.31-.03-.43-.08-.12-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.47h-.51c-.16 0-.43.06-.66.31s-.87.85-.87 2.06c0 1.21.89 2.38 1.02 2.54.12.16 1.74 2.66 4.22 3.63 2.03.79 2.44.67 2.88.63.44-.04 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.11-.24-.17-.48-.29z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container">
+    <footer class="site-footer">
+      <p class="text-tertiary text-small">© 2026 Timur Khuzin</p>
+    </footer>
+  </div>
+
+  <script src="js/i18n-index.js"></script>
+  <script src="js/i18n-scenes.js"></script>
+  <script src="js/i18n-common.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/header-scroll.js"></script>
+  <script src="js/project-scroll.js"></script>
+  <script src="js/nav-dropdown.js"></script>
+
+  <!-- ================= MOBILE MENU ================= -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <a href="index.html" class="mobile-menu-link" data-i18n="nav.home"></a>
+
+      <div class="mobile-menu-group">
+        <button type="button" class="mobile-menu-link mobile-menu-trigger" aria-expanded="false">
+          <span data-i18n="nav.projects"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-menu-caret">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-menu-sub">
+          <a href="projects/ozon.html" data-i18n="nav.project.ozon"></a>
+          <a href="projects/gitverse.html" data-i18n="nav.project.gitverse"></a>
+          <a href="projects/okkta.html" data-i18n="nav.project.okkta"></a>
+          <a href="projects/prokennex.html" data-i18n="nav.project.prokennex"></a>
+          <a href="projects/elevateu.html" data-i18n="nav.project.elevateu"></a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-menu-link" data-i18n="nav.about"></a>
+      <a href="skills.html" class="mobile-menu-link" data-i18n="nav.skills"></a>
+      <a href="index.html#contact" class="mobile-menu-link" data-i18n="nav.contacts"></a>
+
+      <div class="mobile-menu-footer">
+        <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+        </a>
+        <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+        </a>
+        <a href="mailto:TimurKhuzin92@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  
+  <script src="js/back-to-top.js"></script>
+  <script src="js/mobile-menu.js"></script>
+</body>
+</html>

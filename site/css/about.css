@@ -1,0 +1,695 @@
+/* ==========================================================================
+   about.css — стили страницы "О себе"
+   ========================================================================== */
+
+.page-hero {
+  padding-block: var(--space-20) var(--space-12);
+}
+
+.page-hero h1 {
+  max-width: 16ch;
+}
+
+.page-hero .hero-subtitle {
+  margin-top: var(--space-6);
+  margin-inline: 0;
+  min-height: 0;
+}
+
+/* ---- Timeline: чередующиеся записи опыта, разделённые тонкой линией ---- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-8);
+  padding-block: var(--space-12);
+  border-top: 1px solid var(--border);
+}
+
+.timeline-entry:first-child {
+  border-top: none;
+}
+
+.timeline-period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  padding-top: var(--space-1);
+}
+
+.timeline-body h3 {
+  margin-bottom: var(--space-1);
+}
+
+.timeline-role {
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+  margin-bottom: var(--space-4);
+}
+
+.timeline-desc {
+  color: var(--text-secondary);
+  max-width: var(--measure-text);
+}
+
+.timeline-result {
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--accent-soft);
+  color: var(--text-primary);
+  font-size: var(--fs-small);
+  max-width: var(--measure-text);
+}
+
+.timeline-tools {
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ---- Engineering advantages: те же карточки, что на главной, но крупнее ---- */
+.transfer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+.transfer-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.transfer-card p {
+  color: var(--text-secondary);
+  max-width: 36ch;
+}
+
+@media (max-width: 720px) {
+  .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .transfer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .page-hero {
+    padding-block: var(--space-12) var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   CV — резюме
+   ========================================================================== */
+
+.cv-header {
+  margin-bottom: var(--space-16);
+}
+
+.cv-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+  background-image: none;
+  -webkit-text-fill-color: var(--text-primary);
+}
+
+.cv-role {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  max-width: var(--measure-text);
+}
+
+.cv-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.cv-block {
+  margin-top: var(--space-12);
+}
+
+.cv-block > .eyebrow {
+  margin-bottom: var(--space-6);
+}
+
+/* Ключевые навыки */
+.cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  max-width: 720px;
+}
+
+/* Опыт работы */
+.cv-exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.cv-exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--border);
+}
+
+.cv-exp-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cv-exp-period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--text-tertiary);
+  margin: 0;
+  padding-top: 0.25em;
+}
+
+.cv-exp-right h3 {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.cv-exp-right > p {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: var(--measure-text);
+}
+
+.cv-exp-result {
+  margin-top: var(--space-3) !important;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--accent-soft);
+  color: var(--text-primary) !important;
+  font-size: var(--fs-small) !important;
+}
+
+/* Образование */
+.cv-edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.cv-edu-item h3 {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  color: var(--text-primary);
+}
+
+.cv-edu-item p {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+
+.cv-certs-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  align-items: stretch; /* карточки одинаковой высоты */
+}
+
+@media (max-width: 900px) {
+  .cv-certs-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cv-certs-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cv-cert {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  padding: var(--space-8);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cv-cert:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.cv-cert-title {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.cv-cert-desc {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cv-cert-view {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: auto; /* прижимает к низу карточки */
+  padding-top: var(--space-3);
+}
+
+.cv-cert-view::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 300ms ease;
+}
+
+.cv-cert:hover .cv-cert-view::after {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Сторителлинг
+   ========================================================================== */
+
+.story-body {
+  max-width: var(--measure-wide);
+  margin-top: var(--space-12); /* отступ между заголовком и первым абзацем */
+}
+
+.story-body > p {
+  font-size: var(--fs-body-lg);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+.story-body > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Цитата-выноска */
+.story-quote {
+  margin: var(--space-12) 0;
+  padding: var(--space-6) 0 var(--space-6) var(--space-8);
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-weight: 400;
+  max-width: var(--measure-wide);
+}
+
+/* ==========================================================================
+   Адаптив
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .cv-exp-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .cv-exp-period {
+    padding-top: 0;
+    margin-bottom: var(--space-1);
+  }
+
+  .cv-name {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+
+  .cv-role {
+    font-size: var(--fs-body);
+  }
+
+  .story-body > p {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+
+  .story-quote {
+    margin: var(--space-8) 0;
+    padding: var(--space-4) 0 var(--space-4) var(--space-5);
+    font-size: 1.15rem;
+  }
+}
+
+/* ==========================================================================
+   Публикация — карточка с превью и текстом
+   ========================================================================== */
+
+.pub-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  padding: var(--space-8);
+  margin-top: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: var(--measure-wide);
+}
+
+.pub-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.pub-card-media {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+.pub-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pub-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pub-card-journal {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin: 0 0 var(--space-2);
+}
+
+.pub-card-body h3 {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.pub-card-desc {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: var(--space-2) 0 0;
+}
+
+.pub-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--accent);
+  font-size: var(--fs-small);
+  margin-top: var(--space-4);
+}
+
+.pub-card-cta::after {
+  content: "→";
+  transition: transform 300ms ease;
+}
+
+.pub-card:hover .pub-card-cta::after {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Личное — слайдшоу Эльбруса + портрет
+   ========================================================================== */
+
+.personal-carousel {
+  margin-top: var(--space-8);
+  max-width: var(--measure-wide);
+}
+
+/* Окно слайдшоу — фиксированная высота, всё внутри кадрируется */
+.personal-track {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-height: 560px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+/* Каждый слайд — абсолютный, укладывается в окно */
+.personal-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  animation: elbrus-slideshow 15s infinite;
+}
+
+.personal-slide:nth-child(1) { animation-delay: 0s; }
+.personal-slide:nth-child(2) { animation-delay: 5s; }
+.personal-slide:nth-child(3) { animation-delay: 10s; }
+
+.personal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Плавное переключение: 5 секунд на слайд + короткий фейд */
+@keyframes elbrus-slideshow {
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  33%  { opacity: 1; }
+  36%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.personal-caption {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: var(--measure-text);
+}
+
+/* Портрет — компактный, не растягивается */
+.personal-portrait {
+  margin: var(--space-12) 0 0;
+  max-width: 320px;
+}
+
+.personal-portrait img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.personal-portrait figcaption {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   Адаптив
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .pub-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+
+  .pub-card-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .personal-track {
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+  }
+
+  .personal-portrait {
+    max-width: 100%;
+  }
+}
+
+/* Уважение к reduced motion — слайдшоу не мигает, показываем первый кадр */
+@media (prefers-reduced-motion: reduce) {
+  .personal-slide {
+    animation: none;
+  }
+  .personal-slide:nth-child(1) {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Hero страницы "О себе" — текст + портрет справа
+   ========================================================================== */
+
+.page-hero {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 340px);
+  gap: var(--space-12);
+  align-items: start;
+  padding-block: var(--space-20) var(--space-12);
+}
+
+.page-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.page-hero-text h1 {
+  max-width: 16ch;
+}
+
+.page-hero-text .hero-subtitle {
+  margin-top: 0;
+  margin-inline: 0;
+  min-height: 0;
+}
+
+.page-hero-photo {
+  margin: 0;
+  align-self: start;
+  position: relative;
+}
+
+.page-hero-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .page-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-block: var(--space-12) var(--space-8);
+  }
+  .page-hero-photo {
+    max-width: 320px;
+  }
+}
+
+/* ==========================================================================
+   Blob'ы на странице "О себе" — распределены по всей высоте,
+   position: fixed, чтобы «гуляли» за скроллом
+   ========================================================================== */
+
+.bg-blobs--about {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+  /* Убираем затухание сверху-вниз — здесь blob'ы нужны по всему экрану */
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* Blob №4 — левый нижний угол */
+.bg-blobs--about .bg-blob--4 {
+  width: 30vw;
+  aspect-ratio: 1 / 1;
+  bottom: -12%;
+  left: -10%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: blob-float-4 20s ease-in-out infinite;
+}
+
+/* Blob №5 — центр страницы, маленький */
+.bg-blobs--about .bg-blob--5 {
+  width: 18vw;
+  aspect-ratio: 1 / 1;
+  top: 42%;
+  left: 30%;
+  filter: blur(60px);
+  opacity: 0.25;
+  animation: blob-float-5 26s ease-in-out infinite;
+}
+
+@keyframes blob-float-4 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(15%, -12%, 0) scale(1.15); }
+}
+
+@keyframes blob-float-5 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(-18%, 8%, 0) scale(0.85); }
+  66%      { transform: translate3d(12%, -18%, 0) scale(1.2); }
+}
+
+[data-theme="dark"] .bg-blobs--about .bg-blob--4 { opacity: 0.5; }
+[data-theme="dark"] .bg-blobs--about .bg-blob--5 { opacity: 0.4; }
+
+/* На мобилке — отключаем, чтобы не мешали */
+@media (max-width: 900px) {
+  .bg-blobs--about { display: none; }
+}

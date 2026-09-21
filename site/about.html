@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О себе — Timur Khuzin</title>
+  <meta name="description" content="UX/UI дизайнер с 11-летним инженерным опытом в нефтегазе. История перехода в дизайн, опыт и проекты.">
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/reveal.css">
+</head>
+<body>
+
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="bg-blobs bg-blobs--about" aria-hidden="true">
+  <div class="bg-blob bg-blob--1"></div>
+  <div class="bg-blob bg-blob--2"></div>
+  <div class="bg-blob bg-blob--3"></div>
+  <div class="bg-blob bg-blob--4"></div>
+  <div class="bg-blob bg-blob--5"></div>
+  </div>
+  <div class="site-header-wrap">
+    <div class="container">
+      <header class="site-header">
+        <a href="index.html" class="logo">
+          <span class="logo-name">Timur Khuzin</span>
+          <span class="logo-role" data-i18n="logo.role"></span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-dropdown">
+  <a href="index.html#projects" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+  <span data-i18n="nav.projects"></span>
+  <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"></polyline>
+  </svg>
+</a>
+           <ul class="nav-dropdown-menu">
+            <li style="--item-accent: #FF6B35;"><a href="projects/ozon.html" data-i18n="nav.project.ozon"></a></li>
+            <li style="--item-accent: #4A9EFF;"><a href="projects/gitverse.html" data-i18n="nav.project.gitverse"></a></li>
+            <li style="--item-accent: #4ADE80;"><a href="projects/okkta.html" data-i18n="nav.project.okkta"></a></li>
+            <li style="--item-accent: #F5573B;"><a href="projects/prokennex.html" data-i18n="nav.project.prokennex"></a></li>
+            <li style="--item-accent: #8B7CF6;"><a href="projects/elevateu.html" data-i18n="nav.project.elevateu"></a></li>
+          </ul>
+            </li>
+            <li class="nav-dropdown">
+  <a href="about.html" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+    <span data-i18n="nav.about"></span>
+    <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+  <ul class="nav-dropdown-menu">
+    <li style="--item-accent: #7C3AED;"><a href="about.html" data-i18n="nav.about"></a></li>
+    <li style="--item-accent: #7C3AED;"><a href="#cv" data-i18n="nav.about.cv"></a></li>
+  </ul>
+</li>
+            <li><a href="skills.html" data-i18n="nav.skills"></a></li>
+            <li><a href="index.html#contact" data-i18n="nav.contacts"></a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="header-controls">
+          <div class="control-group" role="group" data-i18n-aria-label="theme.toggle.label">
+            <button class="control-segment" data-lang-set="ru">RU</button>
+            <button class="control-segment" data-lang-set="en">EN</button>
+          </div>
+
+          <button class="theme-toggle" data-theme-toggle data-i18n-aria-label="theme.toggle.label">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+    <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="container page-hero">
+  <div class="page-hero-text">
+    <p class="eyebrow" data-i18n="page.about.eyebrow"></p>
+    <h1 data-i18n="page.about.title"></h1>
+    <p class="hero-subtitle" data-i18n="page.about.subtitle"></p>
+  </div>
+  <figure class="page-hero-photo">
+    <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Me.jpg?raw=true" alt="Timur Khuzin" loading="eager">
+  </figure>
+</section>
+
+    <!-- ================= CV ================= -->
+    <section class="container section" id="cv">
+  <hr class="divider" style="margin-bottom: var(--space-16);">
+
+  <!-- Имя и роль -->
+  <div class="cv-header reveal">
+        <h2 class="cv-name" data-i18n="cv.name"></h2>
+        <p class="cv-role" data-i18n="cv.role"></p>
+        <p class="cv-meta" data-i18n="cv.meta"></p>
+      </div>
+
+      <!-- Ключевые навыки -->
+      <div class="cv-block reveal">
+        <p class="eyebrow" data-i18n="cv.skills.title"></p>
+        <div class="cv-skills">
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">UX Research</span>
+          <span class="skill-pill">Prototyping</span>
+          <span class="skill-pill">Usability Testing</span>
+          <span class="skill-pill">User Flow</span>
+          <span class="skill-pill">CJM</span>
+          <span class="skill-pill">Design Systems</span>
+          <span class="skill-pill">UI Design</span>
+          <span class="skill-pill">After Effects</span>
+          <span class="skill-pill">HTML / CSS</span>
+        </div>
+      </div>
+
+      <!-- Опыт работы -->
+      <div class="cv-block reveal">
+        <p class="eyebrow" data-i18n="cv.experience.title"></p>
+        <div class="cv-exp-list">
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.gitverse.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.gitverse.company"></h3>
+              <p data-i18n="cv.exp.gitverse.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.gitverse.result"></p>
+            </div>
+          </div>
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.ozon.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.ozon.company"></h3>
+              <p data-i18n="cv.exp.ozon.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.ozon.result"></p>
+            </div>
+          </div>
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.okkta.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.okkta.company"></h3>
+              <p data-i18n="cv.exp.okkta.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.okkta.result"></p>
+            </div>
+          </div>
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.prokennex.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.prokennex.company"></h3>
+              <p data-i18n="cv.exp.prokennex.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.prokennex.result"></p>
+            </div>
+          </div>
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.elevateu.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.elevateu.company"></h3>
+              <p data-i18n="cv.exp.elevateu.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.elevateu.result"></p>
+            </div>
+          </div>
+
+          <div class="cv-exp-item">
+            <div class="cv-exp-left">
+              <p class="cv-exp-period" data-i18n="cv.exp.engineering.period"></p>
+            </div>
+            <div class="cv-exp-right">
+              <h3 data-i18n="cv.exp.engineering.company"></h3>
+              <p data-i18n="cv.exp.engineering.desc"></p>
+              <p class="cv-exp-result" data-i18n="cv.exp.engineering.result"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Образование -->
+      <div class="cv-block reveal">
+        <p class="eyebrow" data-i18n="cv.education.title"></p>
+        <div class="cv-edu-list">
+          <div class="cv-edu-item">
+            <h3 data-i18n="cv.edu.skillfactory.title"></h3>
+            <p data-i18n="cv.edu.skillfactory.desc"></p>
+          </div>
+          <div class="cv-edu-item">
+            <h3 data-i18n="cv.edu.udgu.title"></h3>
+            <p data-i18n="cv.edu.udgu.desc"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Сертификаты -->
+      <div class="cv-block reveal">
+        <p class="eyebrow" data-i18n="cv.certs.title"></p>
+        <div class="cv-certs-list">
+          <a href="https://drive.google.com/file/d/1GDILFL7nHzGlivptu-B-hz8q7IrDQoGp/view" target="_blank" rel="noopener" class="cv-cert">
+            <span class="cv-cert-title" data-i18n="cv.cert.skillfactory.title"></span>
+            <span class="cv-cert-desc" data-i18n="cv.cert.skillfactory.desc"></span>
+            <span class="cv-cert-view" data-i18n="cv.cert.view"></span>
+          </a>
+          <a href="https://www.coursera.org/account/accomplishments/verify/VYTI7IFMBP26" target="_blank" rel="noopener" class="cv-cert">
+            <span class="cv-cert-title" data-i18n="cv.cert.coursera.title"></span>
+            <span class="cv-cert-desc" data-i18n="cv.cert.coursera.desc"></span>
+            <span class="cv-cert-view" data-i18n="cv.cert.view"></span>
+          </a>
+          <a href="https://drive.google.com/file/d/1_BpqdGtbln28WbQC0Q4ZysuxokLBKkF2/view" target="_blank" rel="noopener" class="cv-cert">
+            <span class="cv-cert-title" data-i18n="cv.cert.ozon.title"></span>
+            <span class="cv-cert-desc" data-i18n="cv.cert.ozon.desc"></span>
+            <span class="cv-cert-view" data-i18n="cv.cert.view"></span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= STORYTELLING ================= -->
+    <section class="container section">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <h2 class="reveal" data-i18n="story.title"></h2>
+
+      <div class="story-body">
+        <p class="reveal" data-i18n="story.p1"></p>
+        <p class="reveal" data-i18n="story.p2"></p>
+        <p class="reveal" data-i18n="story.p3"></p>
+        <p class="reveal" data-i18n="story.p4"></p>
+        <p class="reveal" data-i18n="story.p5"></p>
+
+        <blockquote class="story-quote reveal" data-i18n="story.quote"></blockquote>
+
+        <p class="reveal" data-i18n="story.p6"></p>
+        <p class="reveal" data-i18n="story.p7"></p>
+        <p class="reveal" data-i18n="story.p8"></p>
+        <p class="reveal" data-i18n="story.p9"></p>
+      </div>
+    </section>
+
+    <!-- ================= PUBLICATION ================= -->
+    <section class="container section">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <h2 class="reveal" data-i18n="pub.title"></h2>
+
+      <a href="https://glavteh.ru/коррозия-ингибиторы-удмуртнефть/" target="_blank" rel="noopener" class="pub-card reveal">
+        <div class="pub-card-media">
+  <img src="https://github.com/KhuzinTimur/content-/blob/6376f574f0b93bf74674a7803f404138c6c9d28b/preview_corr.png?raw=true" alt="" loading="lazy">
+</div>
+        <div class="pub-card-body">
+          <p class="pub-card-journal" data-i18n="pub.article.journal"></p>
+          <h3 data-i18n="pub.article.title"></h3>
+          <p class="pub-card-desc" data-i18n="pub.article.desc"></p>
+          <span class="pub-card-cta" data-i18n="pub.article.link"></span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ================= PERSONAL ================= -->
+    <section class="container section">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <h2 class="reveal" data-i18n="personal.title"></h2>
+
+      <div class="personal-carousel reveal">
+        <div class="personal-track">
+          <figure class="personal-slide">
+            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_1.jpg?raw=true" alt="Эльбрус" loading="lazy">
+          </figure>
+          <figure class="personal-slide">
+            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_2.jpg?raw=true" alt="Эльбрус" loading="lazy">
+          </figure>
+          <figure class="personal-slide">
+            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_3.jpg?raw=true" alt="Эльбрус" loading="lazy">
+          </figure>
+        </div>
+        <p class="personal-caption" data-i18n="personal.elbrus.caption"></p>
+      </div>
+
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="container contact-section" id="contact">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="contact-centered">
+        <h2 data-i18n="contact.title"></h2>
+        <p class="contact-invite" data-i18n="contact.invite"></p>
+
+        <div class="contact-icons">
+          <a href="mailto:TimurKhuzin92@gmail.com" class="contact-icon-btn" data-i18n-aria-label="contact.emailAria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+          <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.telegramAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+          </a>
+          <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.whatsappAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="container">
+    <footer class="site-footer">
+      <p class="text-tertiary text-small">© 2026 Timur Khuzin</p>
+    </footer>
+  </div>
+
+  <script src="js/i18n-about.js"></script>
+  <script src="js/i18n-common.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/header-scroll.js"></script>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <a href="index.html" class="mobile-menu-link" data-i18n="nav.home"></a>
+
+      <div class="mobile-menu-group">
+        <button type="button" class="mobile-menu-link mobile-menu-trigger" aria-expanded="false">
+          <span data-i18n="nav.projects"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-menu-caret">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-menu-sub">
+          <a href="projects/ozon.html" data-i18n="nav.project.ozon"></a>
+          <a href="projects/gitverse.html" data-i18n="nav.project.gitverse"></a>
+          <a href="projects/okkta.html" data-i18n="nav.project.okkta"></a>
+          <a href="projects/prokennex.html" data-i18n="nav.project.prokennex"></a>
+          <a href="projects/elevateu.html" data-i18n="nav.project.elevateu"></a>
+        </div>
+      </div>
+
+      <a href="about.html" class="mobile-menu-link" data-i18n="nav.about"></a>
+      <a href="skills.html" class="mobile-menu-link" data-i18n="nav.skills"></a>
+      <a href="index.html#contact" class="mobile-menu-link" data-i18n="nav.contacts"></a>
+
+      <div class="mobile-menu-footer">
+        <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+        </a>
+        <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+        </a>
+        <a href="mailto:TimurKhuzin92@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  
+  <script src="js/back-to-top.js"></script>
+  <script src="js/nav-dropdown.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/mobile-menu.js"></script>
+</body>
+</html>

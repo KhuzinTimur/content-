@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ozon — Personalized recommendations · Timur Khuzin</title>
+  <meta name="description" content="Кейс: разработка блока персонализированных рекомендаций для мобильного приложения Ozon.">
+
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+  <link rel="stylesheet" href="../css/reveal.css">
+</head>
+<body style="--scene-accent: #FF6B35;">
+
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <div class="site-header-wrap">
+    <div class="container">
+      <header class="site-header">
+        <a href="../index.html" class="logo">
+          <span class="logo-name">Timur Khuzin</span>
+          <span class="logo-role" data-i18n="logo.role"></span>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-dropdown">
+  <a href="../index.html#projects" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+    <span data-i18n="nav.projects"></span>
+    <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+              <ul class="nav-dropdown-menu">
+                <li style="--item-accent: #FF6B35;"><a href="ozon.html" data-i18n="nav.project.ozon"></a></li>
+                <li style="--item-accent: #4A9EFF;"><a href="gitverse.html" data-i18n="nav.project.gitverse"></a></li>
+                <li style="--item-accent: #4ADE80;"><a href="okkta.html" data-i18n="nav.project.okkta"></a></li>
+                <li style="--item-accent: #F5573B;"><a href="prokennex.html" data-i18n="nav.project.prokennex"></a></li>
+                <li style="--item-accent: #8b7cf6;"><a href="elevateu.html" data-i18n="nav.project.elevateu"></a></li>
+              </ul>
+            </li>
+            <li class="nav-dropdown">
+  <a href="../about.html" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+    <span data-i18n="nav.about"></span>
+    <svg class="nav-dropdown-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+  <ul class="nav-dropdown-menu">
+    <li style="--item-accent: #7C3AED;"><a href="../about.html" data-i18n="nav.about"></a></li>
+    <li style="--item-accent: #7C3AED;"><a href="../about.html#cv" data-i18n="nav.about.cv"></a></li>
+  </ul>
+</li>
+            <li><a href="../skills.html" data-i18n="nav.skills"></a></li>
+            <li><a href="../index.html#contact" data-i18n="nav.contacts"></a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="header-controls">
+          <div class="control-group" role="group" data-i18n-aria-label="theme.toggle.label">
+            <button class="control-segment" data-lang-set="ru">RU</button>
+            <button class="control-segment" data-lang-set="en">EN</button>
+          </div>
+
+          <button class="theme-toggle" data-theme-toggle data-i18n-aria-label="theme.toggle.label">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <main>
+        <div class="container">
+
+      <!-- ================= HERO ================= -->
+      <section class="project-page-hero">
+        <div class="project-hero-bg" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="#FF6B35"/>
+            <path d="M12 16 L20 11 L28 16 L28 25 L20 30 L12 25 Z" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+            <path d="M12 16 L20 21 L28 16 M20 21 L20 30" stroke="white" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+        <span class="project-page-tag" data-i18n="ozon.tag"></span>
+        <h1 data-i18n="ozon.title"></h1>
+        <p class="project-page-subtitle" data-i18n="ozon.subtitle"></p>
+      </section>
+
+      <!-- ================= META ================= -->
+      <div class="project-page-meta">
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.role"></p>
+          <p data-i18n="ozon.meta.role"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.duration"></p>
+          <p data-i18n="ozon.meta.duration"></p>
+        </div>
+        <div class="project-page-meta-item">
+          <p class="eyebrow" data-i18n="project.meta.tools"></p>
+          <p data-i18n="ozon.meta.tools"></p>
+        </div>
+      </div>
+
+      <!-- ================= COVER ================= -->
+      <div class="project-page-cover reveal reveal-scale">
+        <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/front%20page.png?raw=true" alt="Ozon cover" loading="eager">
+      </div>
+
+      <!-- ================= CONTEXT ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.context.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.context.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="ozon.context.p2"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/2.%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B5.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= PAINS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.pains.title"></h2>
+        <div class="pains-grid">
+          <div class="pain-card reveal" data-reveal-delay="0">
+            <span class="pain-marker">☹︎ 1</span>
+            <p data-i18n="ozon.pains.1"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="120">
+            <span class="pain-marker">☹︎ 2</span>
+            <p data-i18n="ozon.pains.2"></p>
+          </div>
+          <div class="pain-card reveal" data-reveal-delay="240">
+            <span class="pain-marker">☹︎ 3</span>
+            <p data-i18n="ozon.pains.3"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/3.%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= TASK ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.task.title"></h2>
+        <div class="task-split">
+          <div class="task-half reveal" data-reveal-delay="100">
+            <p class="eyebrow" data-i18n="ozon.task.business.label"></p>
+            <p data-i18n="ozon.task.business"></p>
+          </div>
+          <div class="task-half reveal" data-reveal-delay="250">
+            <p class="eyebrow" data-i18n="ozon.task.user.label"></p>
+            <p data-i18n="ozon.task.user"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/4.%20%D0%B8%D0%B4%D0%B5%D0%B8.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= PROCESS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.process.title"></h2>
+        <div class="process-grid">
+          <div class="process-card reveal" data-reveal-delay="0">
+            <span class="process-num">01</span>
+            <p data-i18n="ozon.process.i1"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="100">
+            <span class="process-num">02</span>
+            <p data-i18n="ozon.process.i2"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="200">
+            <span class="process-num">03</span>
+            <p data-i18n="ozon.process.i3"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="300">
+            <span class="process-num">04</span>
+            <p data-i18n="ozon.process.i4"></p>
+          </div>
+          <div class="process-card reveal" data-reveal-delay="400">
+            <span class="process-num">05</span>
+            <p data-i18n="ozon.process.i5"></p>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/7.%20user%20flow.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= WIREFRAMES ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.wireframes.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.wireframes.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/Wireframes.jpg?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= CONCEPT ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.concept.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.concept.desc"></p>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/5.%20%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D1%8F.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= DESIGN ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.design.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.design.desc"></p>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/6.%20%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD.png?raw=true" alt="" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/9.%20%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD.png?raw=true" alt="" loading="lazy">
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= MOBILE ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.mobile.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.mobile.desc"></p>
+
+        <div class="project-page-figure--pair reveal" data-reveal-delay="150">
+          <figure>
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/iPhone%20popular%201.png?raw=true" alt="" loading="lazy">
+          </figure>
+          <figure>
+            <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/iPhone%20popular%202.png?raw=true" alt="" loading="lazy">
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= TESTING ================= -->
+<section class="project-page-section">
+  <h2 class="reveal" data-i18n="ozon.testing.title"></h2>
+
+  <!-- RU-тестирование -->
+  <h3 class="reveal testing-subtitle" data-reveal-delay="100" data-i18n="ozon.testing.ru.subtitle"></h3>
+  <p class="reveal" data-reveal-delay="150" data-i18n="ozon.testing.ru.p1"></p>
+  <p class="reveal" data-reveal-delay="250" data-i18n="ozon.testing.ru.p2"></p>
+
+  <figure class="project-page-figure reveal" data-reveal-delay="150">
+    <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/8.%20%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.png?raw=true" alt="" loading="lazy">
+  </figure>
+
+  <!-- ID-тестирование -->
+  <h3 class="reveal testing-subtitle" data-reveal-delay="100" data-i18n="ozon.testing.id.subtitle"></h3>
+  <p class="reveal" data-reveal-delay="150" data-i18n="ozon.testing.id.p1"></p>
+  <p class="reveal" data-reveal-delay="250" data-i18n="ozon.testing.id.p2"></p>
+
+  <div class="reveal testing-scroll" data-reveal-delay="150">
+    <p class="testing-scroll-hint" data-i18n="ozon.testing.id.hint"></p>
+    <div class="testing-scroll-viewport">
+      <img src="https://github.com/KhuzinTimur/content-/blob/d37885f54da8e6b177dcee311fb73ebc2167e04e/Projects/03-Ozon/images/results_useberry.png?raw=true" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+      <!-- ================= RESULTS ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.results.title"></h2>
+        <div class="project-page-results">
+          <div class="project-page-result reveal" data-reveal-delay="0">
+            <span class="stat">
+              <span class="stat-after">4.7</span>
+              <span class="stat-before">3.5</span>
+            </span>
+            <span class="stat-label" data-i18n="ozon.results.r1"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="120">
+            <span class="stat stat--neutral">23</span>
+            <span class="stat-label" data-i18n="ozon.results.r2"></span>
+          </div>
+          <div class="project-page-result reveal" data-reveal-delay="240">
+            <span class="stat stat--neutral">7</span>
+            <span class="stat-label" data-i18n="ozon.results.r3"></span>
+          </div>
+        </div>
+
+        <figure class="project-page-figure reveal" data-reveal-delay="150">
+          <img src="https://github.com/KhuzinTimur/content-/blob/main/Projects/03-Ozon/images/10.%20mockup.png?raw=true" alt="" loading="lazy">
+        </figure>
+      </section>
+
+      <!-- ================= REFLECTION ================= -->
+      <section class="project-page-section">
+        <h2 class="reveal" data-i18n="ozon.reflection.title"></h2>
+        <p class="reveal" data-reveal-delay="150" data-i18n="ozon.reflection.p1"></p>
+        <p class="reveal" data-reveal-delay="250" data-i18n="ozon.reflection.p2"></p>
+      </section>
+
+      <!-- ================= LINKS ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-links">
+          <a href="https://www.figma.com/design/r75ATDyMoCydo2kKUnpm52/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82" target="_blank" rel="noopener noreferrer" class="project-page-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+            <span data-i18n="cta.figma"></span>
+          </a>
+          <a href="https://www.behance.net/gallery/224820451/Personalized-Local-Picks-for-Ozon-App" target="_blank" rel="noopener noreferrer" class="project-page-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+            <span data-i18n="cta.behance"></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= NAV ================= -->
+      <section class="project-page-section reveal">
+        <div class="project-page-nav">
+          <a href="../index.html#projects">
+            <span data-i18n="cta.backToProjects"></span>
+          </a>
+          <a href="gitverse.html">
+            <span data-i18n="cta.nextProject"></span> GitVerse →
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="container contact-section" id="contact">
+      <hr class="divider" style="margin-bottom: var(--space-16);">
+      <div class="contact-centered">
+        <h2 data-i18n="contact.title"></h2>
+        <p class="contact-invite" data-i18n="contact.invite"></p>
+
+        <div class="contact-icons">
+          <a href="mailto:TimurKhuzin92@gmail.com" class="contact-icon-btn" data-i18n-aria-label="contact.emailAria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+          <a href="https://t.me/KhuzinTimur" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.telegramAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.48.24l.17-2.44 4.44-4.01c.19-.17-.04-.27-.3-.1l-5.49 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.25-3.57c.43-.16.8.1.66.79z"/></svg>
+          </a>
+          <a href="https://wa.me/79199064376" target="_blank" rel="noopener noreferrer" class="contact-icon-btn" data-i18n-aria-label="contact.whatsappAria">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.51 3.62 1.4 5.12L2 22l5.13-1.35c1.44.79 3.08 1.24 4.83 1.24h.01c5.46 0 9.91-4.45 9.91-9.91C21.88 6.45 17.5 2 12.04 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container">
+    <footer class="site-footer">
+      <p class="text-tertiary text-small">© 2026 Timur Khuzin</p>
+    </footer>
+  </div>
+
+  <script src="../js/i18n-ozon.js"></script>
+  <script src="../js/i18n-common.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/cursor.js"></script>
+  <script src="../js/header-scroll.js"></script>
+  <script src="../js/nav-dropdown.js"></script>
+  <script src="../js/back-to-top.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

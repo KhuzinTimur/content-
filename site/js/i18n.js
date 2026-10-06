@@ -19,11 +19,20 @@
   const STORAGE_KEY = 'lang';
   const DEFAULT_LANG = 'ru';
 
+    // Кеш собранных словарей: buildDictionary(lang) выполняется один раз на язык.
+  // Дальше переключение языка просто берёт готовый объект из памяти.
+  const _dictCache = new Map();
+
   function buildDictionary(lang) {
+    if (_dictCache.has(lang)) return _dictCache.get(lang);
+
     const common = (window.I18N_COMMON && window.I18N_COMMON[lang]) || {};
     const scenes = (window.I18N_SCENES && window.I18N_SCENES[lang]) || {};
     const page = (window.I18N_PAGE && window.I18N_PAGE[lang]) || {};
-    return Object.assign({}, common, scenes, page);
+    const merged = Object.assign({}, common, scenes, page);
+
+    _dictCache.set(lang, merged);
+    return merged;
   }
 
   function getLang() {

@@ -303,40 +303,6 @@
 }
 
 /* ==========================================================================
-   Сторителлинг
-   ========================================================================== */
-
-.story-body {
-  max-width: var(--measure-wide);
-  margin-top: var(--space-12); /* отступ между заголовком и первым абзацем */
-}
-
-.story-body > p {
-  font-size: var(--fs-body-lg);
-  line-height: 1.75;
-  color: var(--text-secondary);
-  margin: 0 0 var(--space-6);
-}
-
-.story-body > p:last-child {
-  margin-bottom: 0;
-}
-
-/* Цитата-выноска */
-.story-quote {
-  margin: var(--space-12) 0;
-  padding: var(--space-6) 0 var(--space-6) var(--space-8);
-  border-left: 3px solid var(--accent);
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.4vw, 2rem);
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  font-weight: 400;
-  max-width: var(--measure-wide);
-}
-
-/* ==========================================================================
    Адаптив
    ========================================================================== */
 
@@ -581,60 +547,6 @@
 }
 
 /* ==========================================================================
-   Hero страницы "О себе" — текст + портрет справа
-   ========================================================================== */
-
-.page-hero {
-  display: grid;
-  grid-template-columns: 1fr minmax(240px, 340px);
-  gap: var(--space-12);
-  align-items: start;
-  padding-block: var(--space-20) var(--space-12);
-}
-
-.page-hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.page-hero-text h1 {
-  max-width: 16ch;
-}
-
-.page-hero-text .hero-subtitle {
-  margin-top: 0;
-  margin-inline: 0;
-  min-height: 0;
-}
-
-.page-hero-photo {
-  margin: 0;
-  align-self: start;
-  position: relative;
-}
-
-.page-hero-photo img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-lg);
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-}
-
-@media (max-width: 900px) {
-  .page-hero {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-    padding-block: var(--space-12) var(--space-8);
-  }
-  .page-hero-photo {
-    max-width: 320px;
-  }
-}
-
-/* ==========================================================================
    Blob'ы на странице "О себе" — распределены по всей высоте,
    position: fixed, чтобы «гуляли» за скроллом
    ========================================================================== */
@@ -692,4 +604,357 @@
 /* На мобилке — отключаем, чтобы не мешали */
 @media (max-width: 900px) {
   .bg-blobs--about { display: none; }
+}
+
+/* ==========================================================================
+   Storytelling — 2 колонки: заголовок слева, текст справа
+   ========================================================================== */
+
+.story-rows {
+  margin-top: var(--space-12);
+  display: flex;
+  flex-direction: column;
+}
+
+.story-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+  border-top: 1px solid var(--border);
+}
+
+.story-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.story-row-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.story-row-body {
+  max-width: var(--measure-text);
+}
+
+.story-row-body p {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.story-row-body p + p {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 720px) {
+  .story-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+  .story-row-body p {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+}
+
+/* ==========================================================================
+   HERO страницы "О себе" — 4 фото + текст
+   Desktop: фото по углам, при загрузке заезжают с боков
+   Mobile:  коллаж 2+2, текст под фото
+   ========================================================================== */
+
+/* -------- Общий контейнер -------- */
+.about-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-16);
+  overflow: hidden;
+}
+
+.about-hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  text-align: center;
+  padding-inline: var(--space-6);
+}
+
+.about-hero-text .eyebrow {
+  margin-bottom: var(--space-6);
+}
+
+.about-hero-p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.about-hero-p + .about-hero-p {
+  margin-top: var(--space-6);
+}
+
+/* -------- Фото: общая база -------- */
+.about-hero-photo {
+  position: absolute;
+  width: clamp(180px, 20vw, 300px);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-subtle);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease;
+}
+
+.about-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* -------- Desktop: стартовые позиции (за краем) -------- */
+/* Левые уезжают далеко влево, правые — вправо */
+.about-hero-photo--1 { top: 8%;    left: 3%;   transform: translateX(-200%) rotate(-8deg); }
+.about-hero-photo--2 { bottom: 8%; left: 10%;  transform: translateX(-200%) rotate(4deg); }
+.about-hero-photo--3 { top: 8%;    right: 8%;  transform: translateX(200%)  rotate(6deg); }
+.about-hero-photo--4 { bottom: 8%; right: 3%;  transform: translateX(200%)  rotate(-5deg); }
+
+/* -------- Desktop: финальные позиции (заезжают) -------- */
+.about-hero.is-loaded .about-hero-photo--1 {
+  opacity: 1;
+  transform: translateX(0) rotate(-8deg);
+  transition-delay: 100ms;
+}
+.about-hero.is-loaded .about-hero-photo--2 {
+  opacity: 1;
+  transform: translateX(0) rotate(4deg);
+  transition-delay: 250ms;
+}
+.about-hero.is-loaded .about-hero-photo--3 {
+  opacity: 1;
+  transform: translateX(0) rotate(6deg);
+  transition-delay: 150ms;
+}
+.about-hero.is-loaded .about-hero-photo--4 {
+  opacity: 1;
+  transform: translateX(0) rotate(-5deg);
+  transition-delay: 300ms;
+}
+
+/* Hover — на десктопе фото выпрямляется */
+.about-hero.is-loaded .about-hero-photo:hover {
+  transform: translateX(0) rotate(0deg) scale(1.06);
+  box-shadow: var(--shadow-lg);
+  z-index: 3;
+}
+
+
+/* ==========================================================================
+   МОБИЛКА (≤720px) — коллаж 2+2 сверху, текст снизу
+   ========================================================================== */
+
+@media (max-width: 720px) {
+
+  .about-hero {
+    display: block;
+    min-height: auto;
+    padding-block: 0 var(--space-12);
+    padding-top: 340px; /* место под коллаж */
+    overflow: visible;
+  }
+
+  .about-hero-photo {
+    width: 46%;
+    max-width: 190px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+    /* ---- Стартовые позиции (за экраном через transform) ---- */
+  .about-hero-photo--1 {
+    top: 20px;
+    left: 2%;
+    z-index: 1;
+    transform: translateX(-180%) rotate(-15deg);
+  }
+  .about-hero-photo--2 {
+    top: 110px;
+    left: 8%;
+    z-index: 3;
+    transform: translateX(-180%) rotate(-3deg);
+  }
+  .about-hero-photo--3 {
+    top: 10px;
+    right: 2%;
+    z-index: 2;
+    transform: translateX(180%) rotate(12deg);
+  }
+  .about-hero-photo--4 {
+    top: 100px;
+    right: 8%;
+    z-index: 4;
+    transform: translateX(180%) rotate(-7deg);
+  }
+
+  /* ---- Финальные позиции (коллаж) ---- */
+  .about-hero.is-loaded .about-hero-photo--1 {
+    opacity: 1;
+    transform: translateX(0) rotate(-12deg);
+    transition-delay: 100ms;
+  }
+  .about-hero.is-loaded .about-hero-photo--2 {
+    opacity: 1;
+    transform: translateX(0) rotate(4deg);
+    transition-delay: 250ms;
+  }
+  .about-hero.is-loaded .about-hero-photo--3 {
+    opacity: 1;
+    transform: translateX(0) rotate(9deg);
+    transition-delay: 150ms;
+  }
+  .about-hero.is-loaded .about-hero-photo--4 {
+    opacity: 1;
+    transform: translateX(0) rotate(-6deg);
+    transition-delay: 300ms;
+  }
+
+  /* Hover на мобилке не нужен */
+  .about-hero.is-loaded .about-hero-photo:hover {
+    transform: inherit;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ---- Текст: под коллажем ---- */
+  .about-hero-text {
+    max-width: 100%;
+    padding-inline: var(--space-4);
+    text-align: center;
+  }
+
+  .about-hero-text .eyebrow {
+    margin-bottom: var(--space-4);
+  }
+
+  .about-hero-p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .about-hero-p + .about-hero-p {
+    margin-top: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Фото в истории — одиночные и карусель
+   ========================================================================== */
+
+.story-photo {
+  margin: var(--space-8) 0 0;
+}
+
+.story-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  display: block;
+}
+
+/* Портретное фото в истории: фиксируем 3:4, ограничиваем ширину,
+   чтобы фото не растягивалось на всю колонку */
+.story-photo--portrait img {
+  aspect-ratio: 3 / 4;
+  max-width: 420px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top; /* кадр берёт верх — там голова */
+}
+
+/* --- Карусель --- */
+
+.story-carousel {
+  margin-top: var(--space-8);
+  max-width: 100%;
+}
+
+.story-carousel-track {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+.story-carousel-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.story-carousel-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.story-carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* --- Мобильная адаптация --- */
+
+@media (max-width: 720px) {
+  .story-photo img {
+    max-height: 380px;
+  }
+
+  .story-carousel-track {
+    aspect-ratio: 4 / 5;
+  }
+  
+  .story-photo--portrait img {
+    max-width: 100%;
+    max-height: 500px;
+  }
+}
+
+/* --- Reduced motion: показываем только первое фото, без смены --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .story-carousel-slide {
+    transition: none;
+  }
 }

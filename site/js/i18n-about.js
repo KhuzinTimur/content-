@@ -1,18 +1,13 @@
 window.I18N_PAGE = {
   ru: {
-    // === HERO ===
+    // === HERO (разбросанные фото + центр) ===
     'page.about.eyebrow': 'О себе',
-    'page.about.title': 'Из нефтегаза в UX/UI',
-    'page.about.subtitle': 'Больше 11 лет я работал инженером-технологом в нефтегазовой отрасли, а сейчас проектирую цифровые интерфейсы.',
+    'page.about.hero.p1': 'Я дизайнер цифровых продуктов с инженерным прошлым. Более 11 лет я работал в нефтегазовой отрасли, постепенно переходя к дизайну и сфере IT. Опыт работы со сложными системами, большими объёмами информации, структурный подход и внимание к деталям теперь помогают мне превращать сложные задачи в понятные и цельные решения.',
+    'page.about.hero.p2': 'Вне работы я люблю путешествия, спорт и фотографию, в том числе плёночную. Let\u2019s talk!',
 
     // === CV (резюме) ===
     'cv.title': 'Резюме',
-    'cv.name': 'Тимур Хузин',
-    'cv.role': 'UX/UI и продуктовый дизайнер с инженерным бэкграундом',
-    'cv.meta': 'Опыт в дизайне — с 2024, инженерный опыт — 11+ лет',
-
     'cv.skills.title': 'Ключевые навыки',
-    'cv.skills.list': 'Figma|UX Research|Prototyping|Usability Testing|User Flow|CJM|Design Systems|UI Design|After Effects|HTML / CSS',
 
     'cv.experience.title': 'Опыт работы',
     'cv.exp.gitverse.period': '2025 · Командный проект',
@@ -43,7 +38,7 @@ window.I18N_PAGE = {
     'cv.exp.engineering.period': '2014–2026 · 11+ лет',
     'cv.exp.engineering.company': 'Инженер-технолог — Роснефть, ННК',
     'cv.exp.engineering.desc': 'Путь от оператора по добыче до главного специалиста. Анализ производственных данных, разработка технических мероприятий, координация инженерных команд.',
-    'cv.exp.engineering.result': 'Реализовал проекты по интеллектуальным системам управления, диагностике и энергоэффективности. Выступал на отраслевых конференциях. Призер конкурса «Лучший по профессии».',
+    'cv.exp.engineering.result': 'Реализовал проекты по интеллектуальным системам управления, диагностике и энергоэффективности. Награждён премиями ПАО «Удмуртнефть», призёр конкурса «Лучший по профессии».',
 
     'cv.education.title': 'Образование',
     'cv.edu.skillfactory.title': 'SkillFactory · 2025',
@@ -62,16 +57,35 @@ window.I18N_PAGE = {
 
     // === STORYTELLING ===
     'story.title': 'Моя история',
-    'story.p1': 'Если рассказывать обо мне не только через должности и достижения, то моя история в первую очередь про постоянное желание развиваться, пробовать новое и не останавливаться на уже достигнутом.',
-    'story.p2': 'Свою карьеру я начал в нефтяной промышленности в 2014 году, с позиции оператора по добыче нефти и газа. После окончания университета перешёл на инженерную должность и стал инженером-технологом. Постепенно проявляя инициативу, интерес к работе и готовность брать на себя больше ответственности, я начал замещать специалистов более высокого уровня и участвовать в задачах уже не только на уровне своего подразделения.',
-    'story.p3': 'Отдельной частью моей профессиональной работы стали технические конференции. Я выступал в качестве спикера на конференциях «Инженерная практика» в Казани и Санкт-Петербурге, где рассказывал о выборе ингибиторов коррозии и проблемах H₂S-коррозии насосного оборудования. По результатам исследований в области коррозионной защиты также была опубликована статья в профильном журнале.',
-    'story.p4': 'За время работы мне удалось реализовать несколько проектов, связанных с интеллектуальными системами управления, диагностическим оборудованием и повышением энергоэффективности насосного оборудования. Результаты этой работы отмечались профессиональными наградами и премиями в области энергоэффективности в ПАО «Удмуртнефть». Также я стал призёром конкурса «Лучший по профессии» среди инженеров-технологов.',
-    'story.p5': 'Это был хороший и важный этап моей жизни. Я получил сильную техническую базу, научился работать с большими объёмами информации, искать причины проблем, принимать решения и отвечать за их результат. Но со временем я понял, что мне хочется попробовать себя в другой сфере.',
-    'story.quote': 'Мне нравится именно этот путь постоянного развития, когда уже имеющийся опыт не становится ограничением, а наоборот помогает осваивать что-то новое.',
-    'story.p6': 'Мне всегда были интересны творчество, визуальная составляющая и возможность создавать что-то своими руками, а не только работать с уже существующими системами. Поэтому я решил освоить UX/UI-дизайн. Обучение проходило параллельно с основной работой в нефтяной отрасли, поэтому мне приходилось совмещать две совершенно разные сферы и самостоятельно распределять время между ними.',
-    'story.p7': 'Мне действительно понравился сам процесс обучения. Было интересно разбираться в том, как устроены интерфейсы, почему человек совершает то или иное действие, как превратить идею в понятный пользовательский сценарий, а затем воплотить её в визуальном решении. Особенно нравилось ощущение, когда из первоначальной идеи постепенно появляется полноценный интерфейс, прототип или анимация, который уже можно показать другим людям и получить обратную связь.',
-    'story.p8': 'В процессе обучения я успел поработать над разными проектами, попробовать себя в исследованиях, прототипировании, создании интерфейсов и дизайн-систем, а также поучаствовать в UX/UI-хакатоне в роли руководителя команды. Отдельно был опыт стажировки в Ozon, где я познакомился с реальными продуктовыми задачами и пользовательскими исследованиями.',
-    'story.p9': 'Ещё одна важная часть моей жизни — путешествия. Я побывал в 13 странах и всегда стараюсь не просто посещать новые места, а пожить в них, почувствовать местную среду и посмотреть на привычные вещи с другой стороны. За последнее время мы с семьёй успели пожить во Вьетнаме и Индии, а сейчас живём в Бразилии.',
+
+    'story.from.title': 'Откуда я пришёл',
+    'story.from.p1': 'Я начал карьеру в нефтяной отрасли в 2014 году с позиции оператора по добыче нефти и газа. После университета стал инженером-технологом, постепенно переходя к более сложным задачам и большей ответственности.',
+    'story.from.p2': 'За эти годы я научился работать со сложными системами и большими объёмами информации, искать причины проблем и доводить решения до результата. Этот опыт я перенёс с собой в дизайн.',
+
+    'story.why.title': 'Почему дизайн',
+    'story.why.p1': 'Со временем мне стало интересно не только разбираться в том, как устроены системы, но и самому создавать что-то визуальное.',
+    'story.why.p2': 'Мне всегда была интересна визуальная сторона вещей: композиция, детали и то, как отдельные элементы складываются в цельное решение. Постепенно я понял, что хочу работать там, где логика и структура могут сочетаться с визуальным мышлением.',
+    'story.why.p3': 'В дизайн цифровых продуктов я пришёл через UX/UI. Меня привлекла возможность одновременно разобраться в задаче, понять логику взаимодействия и превратить её в визуальное решение.',
+
+    'story.how.title': 'Как это началось',
+    'story.how.p1': 'Я изучал дизайн параллельно с основной работой. Совмещать две совершенно разные сферы было непросто, но мне быстро понравился сам процесс.',
+    'story.how.p2': 'Особенно нравился момент, когда идея постепенно становилась чем-то конкретным: сначала сценарий или набросок, затем прототип, интерфейс, а иногда и анимация.',
+    'story.how.p3': 'Тогда я понял, что хочу двигаться в этом направлении дальше.',
+
+    'story.next.title': 'Что было дальше',
+    'story.next.p1': 'За время обучения я успел поработать с исследованиями, прототипированием, интерфейсами и дизайн-системами, поучаствовать в UX/UI-хакатоне и пройти стажировку в Ozon.',
+    'story.next.p2': 'Мне близок сам процесс поиска решения: разобраться в задаче, посмотреть на неё с разных сторон, отсеять лишнее и собрать всё в понятную систему.',
+    'story.next.p3': 'А дальше начинается то, что мне особенно интересно в дизайне: визуальная часть, детали и поиск решения, в котором всё действительно работает вместе.',
+
+    'story.outside.title': 'Вне работы',
+    'story.outside.p1': 'Большая часть моей жизни происходит не только за экраном.',
+    'story.outside.p2': 'Я люблю путешествия, спорт, горы и фотографию. Побывал в 13 странах, в некоторых местах жил какое-то время и старался не просто увидеть новое место, а почувствовать его ритм и окружение.',
+    'story.outside.p3': 'В какой-то момент я увлёкся плёночной фотографией. Мне нравится её принцип: ограниченное количество кадров заставляет смотреть внимательнее и тщательнее выбирать момент.',
+    'story.outside.p4': 'Ещё я горжусь восхождением на Эльбрус. Наверное, мне вообще близок подход, когда большой путь складывается из множества небольших шагов.',
+
+    'story.now.title': 'И сейчас',
+    'story.now.p1': 'Я по-прежнему люблю, когда всё работает точно и продуманно.',
+    'story.now.p2': 'Просто теперь мне интересно не только то, как устроена система, но и то, как человек взаимодействует с ней.',
 
     // === PUBLICATION ===
     'pub.title': 'Публикация',
@@ -80,30 +94,20 @@ window.I18N_PAGE = {
     'pub.article.desc': 'По результатам исследований в области коррозионной защиты насосного оборудования. Ранжирование скважин, группы для химической защиты, новый подход к подбору ингибиторов коррозии.',
     'pub.article.link': 'Читать статью',
 
-    // === PERSONAL ===
-    'personal.title': 'Личное',
-    'personal.elbrus.caption': 'Восхождение на Эльбрус — одно из личных достижений, которым особенно горжусь. К нему пришлось готовиться физически и морально, и в итоге получилось достичь вершины.',
-    'personal.me.caption': 'Тимур Хузин',
-
     // === CONTACT ===
     'contact.title': 'Let\u2019s connect',
     'contact.invite': 'Пишите, если есть предложение или просто хочется поздороваться 👋',
   },
 
-    en: {
+  en: {
     // === HERO ===
     'page.about.eyebrow': 'About',
-    'page.about.title': 'From oil & gas to UX/UI',
-    'page.about.subtitle': 'For over 11 years I worked as a process engineer in oil & gas — now I design digital interfaces.',
+    'page.about.hero.p1': 'I\u2019m a digital product designer with an engineering background. I spent more than 11 years working in the oil & gas industry before gradually moving into design and the wider tech field. My experience with complex systems, large amounts of information, structured problem-solving, and attention to detail now helps me turn complex challenges into clear, cohesive solutions.',
+    'page.about.hero.p2': 'Outside of work, I enjoy travelling, sports, and photography, including film. Let\u2019s talk!',
 
     // === CV ===
     'cv.title': 'CV',
-    'cv.name': 'Timur Khuzin',
-    'cv.role': 'UX/UI & Product Designer with an engineering background',
-    'cv.meta': 'Design experience since 2024, engineering experience — 11+ years',
-
     'cv.skills.title': 'Key skills',
-    'cv.skills.list': 'Figma|UX Research|Prototyping|Usability Testing|User Flow|CJM|Design Systems|UI Design|After Effects|HTML / CSS',
 
     'cv.experience.title': 'Work experience',
     'cv.exp.gitverse.period': '2025 · Team project',
@@ -134,7 +138,7 @@ window.I18N_PAGE = {
     'cv.exp.engineering.period': '2014–2026 · 11+ years',
     'cv.exp.engineering.company': 'Process Engineer — Rosneft, NNK',
     'cv.exp.engineering.desc': 'Progressed from field operator to chief specialist. Analyzed production data, developed technical improvements, and coordinated engineering teams.',
-    'cv.exp.engineering.result': 'Implemented projects in intelligent control systems, diagnostics, and energy efficiency. Presented at industry conferences. Awarded a prize in the “Best in Profession” competition.',
+    'cv.exp.engineering.result': 'Implemented projects in intelligent control systems, diagnostics, and energy efficiency. Recognized with awards at PJSC Udmurtneft and placed in the "Best in Profession" competition.',
 
     'cv.education.title': 'Education',
     'cv.edu.skillfactory.title': 'SkillFactory · 2025',
@@ -153,16 +157,35 @@ window.I18N_PAGE = {
 
     // === STORYTELLING ===
     'story.title': 'My story',
-    'story.p1': 'Beyond job titles and achievements, my story is above all about a constant drive to grow, try new things, and never stop at what I\u2019ve already achieved.',
-    'story.p2': 'I started my career in the oil industry in 2014 as a production operator for oil and gas. After graduating, I moved into engineering and became a process engineer. By steadily taking initiative and stepping up, I began taking on responsibilities typically handled by higher-level specialists — and got involved in work beyond my own unit.',
-    'story.p3': 'Technical conferences also became an important part of my professional work. I spoke at the "Engineering Practice" conferences in Kazan and Saint Petersburg, presenting on corrosion inhibitor selection and the challenges of H₂S corrosion in pumping equipment. Based on that research, an article was published in a specialized industry journal.',
-    'story.p4': 'During my time there, I implemented several projects involving intelligent control systems, diagnostic equipment, and energy-efficiency improvements for pumping equipment. The results were recognized with professional awards and energy-efficiency awards at PJSC Udmurtneft. I also became a prize-winner in the "Best in Profession" competition among process engineers.',
-    'story.p5': 'It was a good and important stage of my life. I gained a strong technical foundation, learned to work with large amounts of information, identify root causes, make decisions, and own their outcomes. But over time I realized I wanted to explore a different field.',
-    'story.quote': 'I like this path of constant growth — where the experience you already have doesn\u2019t become a limitation, but instead helps you master something new.',
-    'story.p6': 'I\u2019ve always been drawn to creativity, the visual side of things, and the chance to create things myself rather than only work with existing systems. So I decided to learn UX/UI design. I studied alongside my main job in the oil industry, which meant juggling two completely different fields and managing my time between the two.',
-    'story.p7': 'I genuinely enjoyed the learning process itself. It was fascinating to understand how interfaces work, why people take certain actions, how to turn an idea into a clear user flow, and then bring it to life visually. I especially loved the moment when a full-fledged interface, prototype, or animation gradually emerges from an initial idea — something you can already show to others and get feedback on.',
-    'story.p8': 'Over the course of my studies I worked on a range of projects — gaining experience in research, prototyping, interface design, and design systems — and took part in a UX/UI hackathon as a team lead. I also completed an internship at Ozon, where I got hands-on with real-world product challenges and user research.',
-    'story.p9': 'Another important part of my life is travel. I\u2019ve visited 13 countries, and I always try not just to visit new places but to actually live in them — to experience the local culture and see familiar things from a different angle. Recently, my family and I have spent time living in Vietnam and India, and we now live in Brazil.',
+
+    'story.from.title': 'Where I came from',
+    'story.from.p1': 'I started my career in the oil industry in 2014 as an oil and gas production operator. After university, I moved into engineering and gradually took on more complex challenges and greater responsibility.',
+    'story.from.p2': 'Over the years, I learned how to work with complex systems and large amounts of information, identify the causes behind problems, and carry solutions through to the result. I brought that experience with me into design.',
+
+    'story.why.title': 'Why design',
+    'story.why.p1': 'Over time, I became interested not only in understanding how systems work, but also in creating things myself.',
+    'story.why.p2': 'I had always been drawn to the visual side of things — composition, details, and the way separate elements come together as a whole. Gradually, I realized I wanted to work in a field where logic and structure could meet visual thinking.',
+    'story.why.p3': 'I entered digital product design through UX/UI. What appealed to me was the opportunity to understand a problem, think through how people interact with a product, and turn that logic into a visual solution.',
+
+    'story.how.title': 'How it started',
+    'story.how.p1': 'I studied design alongside my main job. Balancing two completely different fields was challenging, but I quickly found that I genuinely enjoyed the process.',
+    'story.how.p2': 'What I liked most was seeing an idea take shape: first a flow or a rough concept, then a prototype, an interface, and sometimes animation.',
+    'story.how.p3': 'That was when I realized I wanted to keep moving in this direction.',
+
+    'story.next.title': 'What came next',
+    'story.next.p1': 'During my studies, I worked with research, prototyping, interface design, and design systems, took part in a UX/UI hackathon, and interned at Ozon.',
+    'story.next.p2': 'I enjoy the process of finding a solution: understanding the problem, looking at it from different angles, cutting away what isn\u2019t needed, and bringing everything together into a clear system.',
+    'story.next.p3': 'Then comes the part I enjoy just as much: the visual work, the details, and refining the solution until everything works together.',
+
+    'story.outside.title': 'Beyond work',
+    'story.outside.p1': 'There\u2019s a lot more to my life than what happens on a screen.',
+    'story.outside.p2': 'I enjoy travelling, sports, hiking, and photography. I\u2019ve visited 13 countries, lived in several places for a while, and tried not just to see somewhere new, but to get a feel for its rhythm and surroundings.',
+    'story.outside.p3': 'At some point, I became interested in film photography. I like the idea behind it: having a limited number of frames makes you pay closer attention and be more deliberate about the moment you choose.',
+    'story.outside.p4': 'I\u2019m also especially proud of climbing Elbrus. I think I\u2019m naturally drawn to the idea that a long journey is built from many smaller steps.',
+
+    'story.now.title': 'And now',
+    'story.now.p1': 'I still like things to work precisely and thoughtfully.',
+    'story.now.p2': 'The difference is that now I\u2019m interested not only in how a system is built, but also in how people interact with it.',
 
     // === PUBLICATION ===
     'pub.title': 'Publication',
@@ -171,13 +194,8 @@ window.I18N_PAGE = {
     'pub.article.desc': 'Based on research in corrosion protection of pumping equipment. Well ranking, chemical protection groups, and a new approach to selecting corrosion inhibitors.',
     'pub.article.link': 'Read the article',
 
-    // === PERSONAL ===
-    'personal.title': 'Personal',
-    'personal.elbrus.caption': 'Climbing Elbrus is one of the personal achievements I\u2019m especially proud of. It took physical and mental preparation — and in the end I made it to the top.',
-    'personal.me.caption': 'Timur Khuzin',
-
     // === CONTACT ===
     'contact.title': 'Let\u2019s connect',
     'contact.invite': 'Get in touch for opportunities or just to say hi! 👋',
   },
-  }
+};

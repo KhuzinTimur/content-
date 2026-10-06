@@ -6,6 +6,18 @@
   <title>О себе — Timur Khuzin</title>
   <meta name="description" content="UX/UI дизайнер с 11-летним инженерным опытом в нефтегазе. История перехода в дизайн, опыт и проекты.">
 
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="theme-color" content="#F2F3F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15181F" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="О себе — Timur Khuzin">
+<meta property="og:description" content="UX/UI дизайнер с 11-летним инженерным опытом в нефтегазе. История перехода в дизайн, опыт и проекты.">
+<meta property="og:url" content="https://khuzintimur.github.io/about.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
   <script>
     (function () {
       var t = localStorage.getItem('theme');
@@ -81,7 +93,7 @@
         </button>
 
         <div class="header-controls">
-          <div class="control-group" role="group" data-i18n-aria-label="theme.toggle.label">
+          <div class="control-group" role="group" data-i18n-aria-label="lang.toggle.label">
             <button class="control-segment" data-lang-set="ru">RU</button>
             <button class="control-segment" data-lang-set="en">EN</button>
           </div>
@@ -103,29 +115,38 @@
     <main>
 
     <!-- ================= HERO ================= -->
-    <section class="container page-hero">
-  <div class="page-hero-text">
-    <p class="eyebrow" data-i18n="page.about.eyebrow"></p>
-    <h1 data-i18n="page.about.title"></h1>
-    <p class="hero-subtitle" data-i18n="page.about.subtitle"></p>
-  </div>
-  <figure class="page-hero-photo">
-    <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Me.jpg?raw=true" alt="Timur Khuzin" loading="eager">
+<section class="about-hero">
+
+  <figure class="about-hero-photo about-hero-photo--1">
+    <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/me_5.jpg" alt="" loading="eager">
   </figure>
+
+  <figure class="about-hero-photo about-hero-photo--2">
+    <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Me_3.jpg" alt="" loading="eager">
+  </figure>
+
+  <div class="about-hero-text">
+    <p class="eyebrow" data-i18n="page.about.eyebrow"></p>
+    <p class="about-hero-p" data-i18n="page.about.hero.p1"></p>
+    <p class="about-hero-p" data-i18n="page.about.hero.p2"></p>
+  </div>
+
+  <figure class="about-hero-photo about-hero-photo--3">
+    <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Me_6.jpg" alt="" loading="eager">
+  </figure>
+
+  <figure class="about-hero-photo about-hero-photo--4">
+    <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Me_2.jpg" alt="" loading="eager">
+  </figure>
+
 </section>
 
-    <!-- ================= CV ================= -->
     <section class="container section" id="cv">
   <hr class="divider" style="margin-bottom: var(--space-16);">
 
-  <!-- Имя и роль -->
-  <div class="cv-header reveal">
-        <h2 class="cv-name" data-i18n="cv.name"></h2>
-        <p class="cv-role" data-i18n="cv.role"></p>
-        <p class="cv-meta" data-i18n="cv.meta"></p>
-      </div>
+  <h2 class="cv-title reveal" data-i18n="cv.title"></h2>
 
-      <!-- Ключевые навыки -->
+  <!-- Ключевые навыки -->
       <div class="cv-block reveal">
         <p class="eyebrow" data-i18n="cv.skills.title"></p>
         <div class="cv-skills">
@@ -256,25 +277,148 @@
     </section>
 
     <!-- ================= STORYTELLING ================= -->
-    <section class="container section">
-      <hr class="divider" style="margin-bottom: var(--space-16);">
-      <h2 class="reveal" data-i18n="story.title"></h2>
+<section class="container section">
+  <hr class="divider" style="margin-bottom: var(--space-16);">
+  <h2 class="reveal" data-i18n="story.title"></h2>
 
-      <div class="story-body">
-        <p class="reveal" data-i18n="story.p1"></p>
-        <p class="reveal" data-i18n="story.p2"></p>
-        <p class="reveal" data-i18n="story.p3"></p>
-        <p class="reveal" data-i18n="story.p4"></p>
-        <p class="reveal" data-i18n="story.p5"></p>
+  <div class="story-rows">
 
-        <blockquote class="story-quote reveal" data-i18n="story.quote"></blockquote>
-
-        <p class="reveal" data-i18n="story.p6"></p>
-        <p class="reveal" data-i18n="story.p7"></p>
-        <p class="reveal" data-i18n="story.p8"></p>
-        <p class="reveal" data-i18n="story.p9"></p>
+        <!-- Откуда я пришёл -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.from.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.from.p1"></p>
+        <p data-i18n="story.from.p2"></p>
+                <figure class="story-photo story-photo--portrait reveal" data-reveal-delay="200">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/oil_photo.jpg" alt="" loading="lazy">
+        </figure>
       </div>
-    </section>
+    </div>
+
+    <!-- Почему дизайн -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.why.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.why.p1"></p>
+        <p data-i18n="story.why.p2"></p>
+        <p data-i18n="story.why.p3"></p>
+      </div>
+    </div>
+
+    <!-- Как это началось -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.how.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.how.p1"></p>
+        <p data-i18n="story.how.p2"></p>
+        <p data-i18n="story.how.p3"></p>
+                <figure class="story-photo reveal" data-reveal-delay="200">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Figma.jpg" alt="" loading="lazy">
+        </figure>
+      </div>
+    </div>
+
+    <!-- Что было дальше -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.next.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.next.p1"></p>
+        <p data-i18n="story.next.p2"></p>
+        <p data-i18n="story.next.p3"></p>
+                <figure class="story-photo reveal" data-reveal-delay="200">
+          <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/figma_2.jpg" alt="" loading="lazy">
+        </figure>
+      </div>
+    </div>
+
+    <!-- Вне работы -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.outside.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.outside.p1"></p>
+        <p data-i18n="story.outside.p2"></p>
+        <p data-i18n="story.outside.p3"></p>
+        <p data-i18n="story.outside.p4"></p>
+                <div class="story-carousel reveal" data-reveal-delay="200">
+          <div class="story-carousel-track">
+
+            <figure class="story-carousel-slide is-active">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Saint_P_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Saint_P_2.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_2.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_3.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_4.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_5.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Bali_6.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/bangkok_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/bangkok_2.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/bangkok_3.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Elbrus_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Elbrus_2.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Elbrus_3.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/elbrus_4.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Istanbul_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Istanbul_2.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Santos.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Singapur_1.jpg" alt="" loading="lazy">
+            </figure>
+            <figure class="story-carousel-slide">
+              <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@52b6fff9ecf7ad0685a2e221b113b674ae2001dd/site/photo/Vietnam_1.jpg" alt="" loading="lazy">
+            </figure>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- И сейчас -->
+    <div class="story-row reveal">
+      <h3 class="story-row-title" data-i18n="story.now.title"></h3>
+      <div class="story-row-body">
+        <p data-i18n="story.now.p1"></p>
+        <p data-i18n="story.now.p2"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <!-- ================= PUBLICATION ================= -->
     <section class="container section">
@@ -283,7 +427,7 @@
 
       <a href="https://glavteh.ru/коррозия-ингибиторы-удмуртнефть/" target="_blank" rel="noopener" class="pub-card reveal">
         <div class="pub-card-media">
-  <img src="https://github.com/KhuzinTimur/content-/blob/6376f574f0b93bf74674a7803f404138c6c9d28b/preview_corr.png?raw=true" alt="" loading="lazy">
+  <img src="https://cdn.jsdelivr.net/gh/KhuzinTimur/content-@6376f574f0b93bf74674a7803f404138c6c9d28b/preview_corr.png" alt="" loading="lazy">
 </div>
         <div class="pub-card-body">
           <p class="pub-card-journal" data-i18n="pub.article.journal"></p>
@@ -292,28 +436,6 @@
           <span class="pub-card-cta" data-i18n="pub.article.link"></span>
         </div>
       </a>
-    </section>
-
-    <!-- ================= PERSONAL ================= -->
-    <section class="container section">
-      <hr class="divider" style="margin-bottom: var(--space-16);">
-      <h2 class="reveal" data-i18n="personal.title"></h2>
-
-      <div class="personal-carousel reveal">
-        <div class="personal-track">
-          <figure class="personal-slide">
-            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_1.jpg?raw=true" alt="Эльбрус" loading="lazy">
-          </figure>
-          <figure class="personal-slide">
-            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_2.jpg?raw=true" alt="Эльбрус" loading="lazy">
-          </figure>
-          <figure class="personal-slide">
-            <img src="https://github.com/KhuzinTimur/content-/blob/61db9ddb65a25e0e62f7fac8e23ab6dcdfc988ec/Elbrus_3.jpg?raw=true" alt="Эльбрус" loading="lazy">
-          </figure>
-        </div>
-        <p class="personal-caption" data-i18n="personal.elbrus.caption"></p>
-      </div>
-
     </section>
 
     <!-- ================= CONTACT ================= -->
@@ -394,9 +516,10 @@
     </div>
   </div>
   
+  <script src="js/mobile-menu.js"></script>
   <script src="js/back-to-top.js"></script>
   <script src="js/nav-dropdown.js"></script>
   <script src="js/reveal.js"></script>
-  <script src="js/mobile-menu.js"></script>
+  <script src="js/story-carousel.js"></script>
 </body>
 </html>

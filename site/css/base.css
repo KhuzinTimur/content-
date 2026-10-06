@@ -161,11 +161,17 @@ p, .text-body { font-size: var(--fs-body); line-height: var(--lh-body); letter-s
    ========================================================================== */
 
 h1, h2 {
-  background-image: var(--title-gradient);
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-          color: transparent;
+  color: var(--text-primary);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h1, h2 {
+    background-image: var(--title-gradient);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+  }
 }
 
 /* Исключение: заголовки проектных сцен используют цвет проекта,
@@ -257,4 +263,33 @@ h1, h2 {
   .back-to-top:hover {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   Фокус с клавиатуры (Tab) — видимая рамка.
+   Только :focus-visible, то есть не для клика мышью.
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* На тёмном фоне светлый акцент читается лучше */
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--accent-hover);
+}
+
+/* Кнопка «наверх» — круглая, обычный border-radius её обрежет */
+.back-to-top:focus-visible {
+  border-radius: var(--radius-full);
+  outline-offset: 4px;
+}
+
+/* Круглые кнопки соцсетей на главной — тоже */
+.contact-icon-btn:focus-visible,
+.mobile-menu-footer a:focus-visible {
+  border-radius: var(--radius-full);
+  outline-offset: 4px;
 }

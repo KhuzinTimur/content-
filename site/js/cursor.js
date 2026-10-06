@@ -18,6 +18,13 @@
   const dot  = document.querySelector('.cursor-dot');
   if (!ring || !dot) return;
 
+  // Активируем скрытие системного курсора только теперь — когда мы точно
+  // знаем, что браузер поддерживает hover, оба элемента .cursor-ring/.cursor-dot
+  // есть в DOM, и скрипт дошёл до этого места. Если что-то упадёт раньше,
+  // класс не повесится, cursor: none не сработает, и у пользователя
+  // останется обычный системный курсор.
+  document.documentElement.classList.add('has-custom-cursor');
+
   const EASE_RING = 0.16;   // чем меньше — тем сильнее отстаёт кольцо
   const EASE_DOT  = 0.55;   // точка почти «прилипает» к мыши
 

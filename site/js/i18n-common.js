@@ -19,6 +19,7 @@ window.I18N_COMMON = {
     'nav.contacts': 'Контакты',
 
     'theme.toggle.label': 'Тема',
+    'lang.toggle.label': 'Язык интерфейса',
 
     'lang.ru': 'RU',
     'lang.en': 'EN',
@@ -58,6 +59,7 @@ window.I18N_COMMON = {
     'nav.contacts': 'Contacts',
 
     'theme.toggle.label': 'Theme',
+    'lang.toggle.label': 'Interface language',
 
     'lang.ru': 'RU',
     'lang.en': 'EN',

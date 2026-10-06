@@ -19,7 +19,11 @@
   if (!scenes.length) return;
 
   const section = document.getElementById('projects');
-  const snapEnabled = () => window.matchMedia('(min-width: 721px)').matches;
+ // Раньше снап был выключен на мобилке — на iOS Safari CSS scroll-snap
+// конфликтует с инерционным скроллом. Наш JS-подход работает иначе:
+// он ждёт, пока пользователь закончит жест, потом плавно доезжает до
+// ближайшей сцены. Это безопасно и на телефонах — поэтому включаем везде.
+const snapEnabled = () => true;
 
   /* ---------- 1. Активная сцена ---------- */
 
@@ -48,7 +52,7 @@
 
   if (!section) return;
 
-  const SNAP_IDLE_MS = 130;   // сколько ждать после последнего события скролла
+  const SNAP_IDLE_MS = 180;   // сколько ждать после последнего события скролла
   const SNAP_TOLERANCE = 6;   // px — если мы уже почти на сцене, не дёргаемся
 
   let idleTimer = null;

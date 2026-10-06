@@ -84,4 +84,16 @@
     window.addEventListener('resize', updateParallax, { passive: true });
     updateParallax();
   }
+
+    /* ---------- 3. ABOUT HERO: staggered-появление фото ---------- */
+
+  const aboutHero = document.querySelector('.about-hero');
+  if (aboutHero) {
+    // Небольшая задержка — даём браузеру отрисовать стартовое состояние
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        aboutHero.classList.add('is-loaded');
+      });
+    });
+  }
 })();
